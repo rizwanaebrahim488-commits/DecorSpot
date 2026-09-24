@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+  <title>decorspot 2.0 — newborn & baby portrait studio</title>
+  <meta name="description" content="A warm, unhurried newborn and baby portrait studio in Muvattupuzha, Ernakulam, Kerala. Thoughtful photographs for the first chapter of your family story." />
+  <meta name="keywords" content="newborn photography, baby photoshoot, studio, decorspot 2.0, baby portraits, Kerala, Ernakulam, Muvattupuzha" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="decorspot 2.0 — newborn & baby portrait studio" />
+  <meta property="og:description" content="Soft light, slow mornings, and photographs that feel like home." />
+  <meta property="og:image" content="canva_preview.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="decorspot 2.0 — newborn & baby portrait studio" />
+  <meta name="twitter:description" content="Soft light, slow mornings, and photographs that feel like home." />
+  <meta name="twitter:image" content="canva_preview.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="logo.jpg" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========================================================================
+       SITE HEADER / NAVIGATION
+       ======================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container">
+      <div class="nav-inner">
+        <!-- Brand Logo -->
+        <a href="#top" class="brand-logo-link" title="DecorSpot 2.0 - Home">
+          <img src="canva_preview.jpg" alt="decorspot 2.0 logo" class="brand-avatar" onerror="this.src='logo.jpg'" />
+          <div class="brand-text-wrap">
+            <span class="brand-title">DecorSpot 2.0 </span>
+            <span class="brand-subtitle">studio </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="nav-links-desktop" aria-label="Primary navigation">
+          <a href="#story" class="nav-item">Our approach</a>
+          <a href="#gallery" class="nav-item">Gallery</a>
+          <a href="#packages" class="nav-item">Packages</a>
+          <a href="#faq" class="nav-item">Good to know</a>
+          
+          <!-- Instagram Tag Link -->
+          <a href="https://www.instagram.com/decorspot2.0?stkn=cG9yaDgxZTJtbzA1&utm_source=qr" target="_blank" rel="noopener noreferrer" class="nav-insta-tag" title="Follow @decorspot2.0 on Instagram">
+            <svg class="nav-insta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            <span>@decorspot2.0</span>
+          </a>
+
+          <!-- WhatsApp Direct Enquire Button -->
+          <a href="https://wa.me/918891236399?text=Hello%20decorspot%2C%20I%27d%20love%20to%20know%20more%20about%20a%20newborn%20session." target="_blank" rel="noopener noreferrer" class="btn-nav-whatsapp" title="Chat on WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+            <span>Enquire</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+        </nav>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="6" x2="20" y2="6"></line>
+            <line x1="4" y1="18" x2="20" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Slide-Down Drawer -->
+    <div class="mobile-menu-drawer" id="mobileMenuDrawer" aria-label="Mobile navigation">
+      <a href="#story" class="mobile-nav-link">Our approach</a>
+      <a href="#gallery" class="mobile-nav-link">Gallery</a>
+      <a href="#packages" class="mobile-nav-link">Packages</a>
+      <a href="#faq" class="mobile-nav-link">Good to know</a>
+      <a href="#enquire" class="mobile-nav-link">Contact studio</a>
+
+      <a href="https://www.instagram.com/decorspot2.0?stkn=cG9yaDgxZTJtbzA1&utm_source=qr" target="_blank" rel="noopener noreferrer" class="mobile-insta-tag">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+        <span>Instagram: @decorspot2.0</span>
+      </a>
+
+      <a href="https://wa.me/918891236399?text=Hello%20decorspot%2C%20I%27d%20love%20to%20know%20more%20about%20a%20newborn%20session." target="_blank" rel="noopener noreferrer" class="mobile-whatsapp-btn">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+        </svg>
+        <span>Start WhatsApp Enquiry</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       HERO SECTION (#top)
+       ======================================================================== -->
+  <section class="hero-section" id="top">
+    <!-- Ambient Shapes -->
+    <div class="hero-bg-orb-1"></div>
+    <div class="hero-bg-orb-2"></div>
+    <div class="hero-bg-orb-3"></div>
+
+    <div class="container">
+      <div class="hero-grid">
+        <!-- Left Hero Text Content -->
+        <div class="hero-content">
+          <div class="hero-eyebrow-wrap">
+            <p class="hero-eyebrow">newborn & baby portrait studio</p>
+          </div>
+
+          <h1 class="hero-title">Little moments,
+beautifully held.</h1>
+
+          <p class="hero-body">
+            A warm, unhurried portrait studio for the first chapter of your family story. Come as you are; we will take care of the rest.
+          </p>
+
+          <div class="hero-cta-group">
+            <!-- Primary WhatsApp Direct Redirection -->
+            <a href="https://wa.me/918891236399?text=Hello%20decorspot%2C%20I%27d%20love%20to%20know%20more%20about%20a%20newborn%20session." target="_blank" rel="noopener noreferrer" class="btn-primary-whatsapp" id="heroWhatsAppBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+              <span>Start a WhatsApp enquiry</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+
+            <!-- Gallery Anchor Link -->
+            <a href="#gallery" class="btn-hero-gallery">
+              <span>See the work</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Booking Note -->
+          <div class="hero-booking-note">
+            <span class="hero-note-line"></span>
+            <span>Now accepting newborn sessions from week 2 to week 10</span>
+          </div>
+        </div>
+
+        <!-- Right Hero Visual -->
+        <div class="hero-visual">
+          <div class="hero-arch-frame">
+            <img src="img1.JPG" alt="Newborn sleeping peacefully in an oat-colored knit blanket at DecorSpot studio" class="hero-baby-image" />
+            <div class="hero-image-overlay"></div>
+          </div>
+
+          <!-- Floating Badges -->
+          <div class="hero-float-badge">
+            <span class="hero-badge-text">made for the in-between</span>
+          </div>
+
+          <div class="hero-float-orb-yellow"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <a href="#story" class="scroll-indicator">
+      <span class="scroll-line"></span>
+      <span>scroll gently</span>
+    </a>
+  </section>
+
+  <!-- ========================================================================
+       SOCIAL PROOF & REDIRECTION STRIP
+       ======================================================================== -->
+  <section class="social-strip">
+    <div class="container">
+      <div class="social-strip-inner">
+        <div class="social-strip-left">
+          <!-- Instagram Tag Pill with Redirection & Copy -->
+          <a href="https://www.instagram.com/decorspot2.0?stkn=cG9yaDgxZTJtbzA1&utm_source=qr" target="_blank" rel="noopener noreferrer" class="insta-tag-pill" title="Click to open Instagram profile">
+            <span class="insta-gradient-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </span>
+            <span class="insta-handle-text">@decorspot2.0</span>
+            <span class="insta-action-hint">Visit Profile ↗</span>
+          </a>
+
+          <!-- WhatsApp Quick Contact Tag -->
+          <a href="https://wa.me/918891236399?text=Hello%20decorspot%2C%20I%27d%20love%20to%20know%20more%20about%20a%20newborn%20session." target="_blank" rel="noopener noreferrer" class="social-stat-item" style="font-weight: 600; color: var(--color-primary);">
+            <span class="stat-dot" style="background-color: var(--color-whatsapp);"></span>
+            <span>WhatsApp: +91 88912 36399</span>
+          </a>
+        </div>
+
+        <div class="social-strip-stats">
+          <div class="social-stat-item">
+            <span class="stat-dot"></span>
+            <span>Hospital-Grade Sanitized Studio</span>
+          </div>
+          <div class="social-stat-item">
+            <span class="stat-dot"></span>
+            <span>Baby-Led Pacing</span>
+          </div>
+          <a href="https://maps.google.com/?q=Muvattupuzha,+Ernakulam,+Kerala" target="_blank" rel="noopener noreferrer" class="social-stat-item social-location-link" title="Open Google Maps Location">
+            <span class="stat-dot"></span>
+            <span>Muvattupuzha, Kerala ↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       OUR APPROACH SECTION (#story)
+       ======================================================================== -->
+  <section class="story-section" id="story">
+    <div class="container">
+      <div class="story-header-grid">
+        <div>
+          <p class="story-eyebrow">the decorspot way</p>
+          <div class="story-rule"></div>
+        </div>
+
+        <div>
+          <h2 class="story-headline">
+            A little less posing.<br>
+            <span class="story-headline-highlight">A lot more presence.</span>
+          </h2>
+
+          <p class="story-intro-body">
+            The best photographs happen in the pauses: after a yawn, during a cuddle, in that quiet look between a parent and a new baby. Our sessions are shaped around those pauses, never rushed past them.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3-Step Process -->
+      <div class="process-grid">
+        <!-- Step 1 -->
+        <article class="process-card">
+          <div class="process-card-top">
+            <span class="process-number">01</span>
+            <svg class="process-icon-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </div>
+          <h3 class="process-title">A gentle beginning</h3>
+          <p class="process-body">
+            We talk through your hopes, your baby’s rhythm, and the little details that make this season yours.
+          </p>
+        </article>
+
+        <!-- Step 2 -->
+        <article class="process-card">
+          <div class="process-card-top">
+            <span class="process-number">02</span>
+            <svg class="process-icon-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </div>
+          <h3 class="process-title">Room to settle</h3>
+          <p class="process-body">
+            Our studio is warm, quiet, and ready for pauses. Feedings, cuddles, and tiny resets are always part of the plan.
+          </p>
+        </article>
+
+        <!-- Step 3 -->
+        <article class="process-card">
+          <div class="process-card-top">
+            <span class="process-number">03</span>
+            <svg class="process-icon-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </div>
+          <h3 class="process-title">A keepsake to keep</h3>
+          <p class="process-body">
+            You leave with a considered collection of images—honest, artful, and made to be lived with for years.
+          </p>
+        </article>
+      </div>
+
+      <!-- Studio Safety & Hygiene Highlight Banner -->
+      <div class="safety-highlight-banner">
+        <div class="safety-item">
+          <svg class="safety-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <span>Hospital-grade sanitized wraps & props</span>
+        </div>
+        <div class="safety-item">
+          <svg class="safety-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path>
+          </svg>
+          <span>Cozy 28°C climate-controlled newborn suite</span>
+        </div>
+        <div class="safety-item">
+          <svg class="safety-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span>Never rushed — 100% baby-led sessions</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       GALLERY SECTION (#gallery)
+       ======================================================================== -->
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+      <div class="gallery-header">
+        <div>
+          <p class="gallery-eyebrow">a small collection</p>
+          <h2 class="gallery-headline">
+            The quiet<br>
+            <span class="gallery-headline-gold">kind of magic.</span>
+          </h2>
+        </div>
+
+        <p class="gallery-header-sub">
+          A glimpse at the honest, tactile stories we make for the families who visit us.
+        </p>
+      </div>
+
+      <!-- Category Filter Buttons -->
+      <div class="gallery-filters">
+        <button type="button" class="filter-btn active" data-filter="all">All Stories</button>
+        <button type="button" class="filter-btn" data-filter="newborn">Fresh Newborn (5–21 Days)</button>
+        <button type="button" class="filter-btn" data-filter="details">Tiny Details & Hands</button>
+        <button type="button" class="filter-btn" data-filter="family">Family & Tender Moments</button>
+      </div>
+
+      <!-- Bento Masonry Grid -->
+      <div class="gallery-grid">
+        <!-- 1. The quiet hour (Featured large portrait) -->
+        <figure class="gallery-item col-span-7-row-2" data-category="newborn">
+          <img src="img1.JPG" alt="Sleeping newborn wrapped in an oat-colored knit blanket" class="gallery-img" loading="lazy" />
+          <div class="gallery-vignette"></div>
+          <figcaption class="gallery-caption">
+            <span>the quiet hour</span>
+            <svg class="gallery-zoom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </figcaption>
+        </figure>
+
+        <!-- 2. Soft beginnings (Feet detail) -->
+        <figure class="gallery-item col-span-5" data-category="details">
+          <img src="img2.JPG" alt="Newborn tiny feet resting softly on an ivory linen blanket" class="gallery-img" loading="lazy" />
+          <div class="gallery-vignette"></div>
+          <figcaption class="gallery-caption">
+            <span>soft beginnings</span>
+            <svg class="gallery-zoom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </figcaption>
+        </figure>
+
+        <!-- 3. Small wonder (Baby swaddle in flowers) -->
+        <figure class="gallery-item col-span-5" data-category="newborn">
+          <img src="img3.JPG" alt="Swaddled newborn resting peacefully beside delicate florals" class="gallery-img" loading="lazy" />
+          <div class="gallery-vignette"></div>
+          <figcaption class="gallery-caption">
+            <span>small wonder</span>
+            <svg class="gallery-zoom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </figcaption>
+        </figure>
+
+        <!-- 4. Held close (Parent and newborn hands) -->
+        <figure class="gallery-item col-span-12" data-category="family">
+          <img src="img4.JPG" alt="Parent gently holding a newborn hand" class="gallery-img" loading="lazy" />
+          <div class="gallery-vignette"></div>
+          <figcaption class="gallery-caption">
+            <span>held close — parent &amp; baby</span>
+            <svg class="gallery-zoom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </figcaption>
+        </figure>
+
+        <!-- 5. First smile (Baby with knit bonnet) -->
+        <figure class="gallery-item col-span-6" data-category="newborn">
+          <img src="img5.JPG" alt="Baby smiling in gentle dream in organic knit bonnet" class="gallery-img" loading="lazy" />
+          <div class="gallery-vignette"></div>
+          <figcaption class="gallery-caption">
+            <span>gentle dream</span>
+            <svg class="gallery-zoom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </figcaption>
+        </figure>
+
+        <!-- 6. Motherhood embrace -->
+        <figure class="gallery-item col-span-6" data-category="family">
+          <img src="img6.JPG" alt="Mother gently cradling new baby in quiet morning light" class="gallery-img" loading="lazy" />
+          <div class="gallery-vignette"></div>
+          <figcaption class="gallery-caption">
+            <span>motherhood quietude</span>
+            <svg class="gallery-zoom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- Instagram Community Showcase Banner -->
+      <div class="gallery-insta-banner">
+        <div class="gallery-insta-info">
+          <h4>See our latest newborn stories on Instagram</h4>
+          <p>Tag your session moments with <strong>#DecorSpotBabies</strong> and <strong>@decorspot2.0</strong> to be featured.</p>
+        </div>
+
+        <a href="https://www.instagram.com/decorspot2.0?stkn=cG9yaDgxZTJtbzA1&utm_source=qr" target="_blank" rel="noopener noreferrer" class="btn-gallery-insta">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          <span>Follow @decorspot2.0</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       PACKAGES & SESSIONS (#packages)
+       ======================================================================== -->
+  <section class="story-section" id="packages" style="background-color: #fbf6f0; border-top: 1px solid rgba(37,63,53,0.08);">
+    <div class="container">
+      <div style="text-align: center; max-width: 650px; margin: 0 auto 56px;">
+        <p class="story-eyebrow" style="color: var(--color-terracotta);">considered collections</p>
+        <h2 class="story-headline" style="font-size: clamp(2.4rem, 4.5vw, 4.5rem); margin-top: 14px;">
+          Simple, honest packages.
+        </h2>
+        <p style="margin-top: 16px; color: var(--color-text-muted); font-size: 1rem;">
+          Every collection includes full access to our curated newborn wardrobe, sanitized organic wraps, handmade bonnets, and unhurried baby-led session time.
+        </p>
+      </div>
+
+      <div class="process-grid" style="border: none; padding-top: 0; margin-top: 0;">
+        <!-- Package 1 -->
+        <div style="background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(37, 63, 53, 0.12); border-radius: 24px; padding: 36px 30px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--shadow-soft);">
+          <div>
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-primary); background: rgba(37, 63, 53, 0.08); padding: 4px 12px; border-radius: 999px;">Mini Collection</span>
+            <h3 style="font-family: var(--font-display); font-size: 1.9rem; margin-top: 18px; color: var(--color-primary);">Little Dreamer</h3>
+            <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-top: 8px;">Ideal for parents seeking clean, classic newborn portraits of baby alone.</p>
+            
+            <ul style="margin-top: 24px; display: flex; flex-direction: column; gap: 12px; font-size: 0.88rem; color: var(--color-text-main); list-style: none;">
+              <li style="display: flex; align-items: center; gap: 8px;">✓ 1.5 to 2 unhurried hours</li>
+              <li style="display: flex; align-items: center; gap: 8px;">✓ 2 bespoke setups &amp; sanitized wraps</li>
+              <li style="display: flex; align-items: center; gap: 8px;">✓ 12 high-resolution retouched digital files</li>
+              <li style="display: flex; align-items: center; gap: 8px;">✓ Private online viewing gallery</li>
+            </ul>
+          </div>
+
+          <div style="margin-top: 36px;">
+            <a href="https://wa.me/918891236399?text=Hello%20decorspot%2C%20I%27d%20love%20to%20enquire%20about%20the%20Little%20Dreamer%20Package." target="_blank" rel="noopener noreferrer" class="btn-primary-whatsapp" style="width: 100%; justify-content: center; padding: 12px 20px; font-size: 0.85rem;">
+              <span>Enquire on WhatsApp</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Package 2 (Signature / Most Popular) -->
+        <div style="background: #fff; border: 2px solid var(--color-terracotta); border-radius: 24px; padding: 36px 30px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--shadow-elevated); position: relative;">
+          <div style="position: absolute; top: -14px; right: 28px; background: var(--color-terracotta); color: #fff; font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; padding: 4px 14px; border-radius: 999px; font-weight: 700;">
+            Most Cherished
+          </div>
+          <div>
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-terracotta); background: rgba(198, 133, 109, 0.12); padding: 4px 12px; border-radius: 999px;">Signature Collection</span>
+            <h3 style="font-family: var(--font-display); font-size: 1.9rem; margin-top: 18px; color: var(--color-primary);">Cherished Miracle</h3>
+            <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-top: 8px;">Our complete family experience capturing baby, parents, and siblings together.</p>
+            
+            <ul style="margin-top: 24px; display: flex; flex-direction: column; gap: 12px; font-size: 0.88rem; color: var(--color-text-main); list-style: none;">
+              <li style="display: flex; align-items: center; gap: 8px; font-weight: 600;">✓ 2.5 to 3 unhurried hours</li>
+              <li style="display: flex; align-items: center; gap: 8px; font-weight: 600;">✓ 4 bespoke setups + Parent &amp; Sibling portraits</li>
+              <li style="display: flex; align-items: center; gap: 8px;">✓ 25 high-resolution fine art retouched files</li>
+              <li style="display: flex; align-items: center; gap: 8px;">✓ Handcrafted premium keepsake photo album</li>
+              <li style="display: flex; align-items: center; gap: 8px;">✓ Priority WhatsApp scheduling</li>
+            </ul>
+          </div>
+
+          <div style="margin-top: 36px;">
+            <a href="https://wa.me/918891236399?text=Hello%20decorspot%2C%20I%27d%20love%20to%20enquire%20about%20the%20Cherished%20Miracle%20Signature%20Package." target="_blank" rel="noopener noreferrer" class="btn-primary-whatsapp" style="width: 100%; justify-content: center; background: var(--color-terracotta); padding: 13px 20px; font-size: 0.88rem;">
+              <span>Enquire on WhatsApp</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Package 3 -->
+        <div style="background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(37, 63, 53, 0.12); border-radius: 24px; padding: 36px 30px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--shadow-soft);">
+          <div>
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-primary); background: rgba(37, 63, 53, 0.08); padding: 4px 12px; border-radius: 999px;">Luxury Heirloom</span>
+            <h3 style="font-family: var(--font-display); font-size: 1.9rem; margin-top: 18px; color: var(--color-primary);">The Heirloom Story</h3>
+            <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-top: 8px;">Maternity + Newborn combo documenting your entire transition into parenthood.</p>
+            
+            <ul style="margin-top: 24px; display: flex; flex-direction: column; gap: 12px; font-size: 0.88rem; color: var(--color-text-main); list-style: none;">
+              <li style="display: flex; align-items: center; gap: 8px;">✓ Two full photo sessions (Maternity &amp; Newborn)</li>
+              <li style="display: flex; align-items: center; gap: 8px;">✓ All high-res retouched digital portraits</li>
+              <li style="display: flex; align-items: center; gap: 8px;">✓ Luxury linen boxed presentation album</li>
+              <li style="display: flex; align-items: center; gap: 8px;">✓ Fine art archival wall print included</li>
+            </ul>
+          </div>
+
+          <div style="margin-top: 36px;">
+            <a href="https://wa.me/918891236399?text=Hello%20decorspot%2C%20I%27d%20love%20to%20enquire%20about%20the%20Heirloom%20Story%20Package." target="_blank" rel="noopener noreferrer" class="btn-primary-whatsapp" style="width: 100%; justify-content: center; padding: 12px 20px; font-size: 0.85rem;">
+              <span>Enquire on WhatsApp</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       FAQ ACCORDION SECTION (#faq)
+       ======================================================================== -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="faq-grid">
+        <div>
+          <p class="faq-eyebrow">good to know</p>
+          <h2 class="faq-headline">
+            Come curious.<br>
+            Leave reassured.
+          </h2>
+
+          <p class="faq-sub">
+            There is no perfect way to do a newborn session. There is only your way, on this particular day.
+          </p>
+
+          <div style="margin-top: 36px;">
+            <a href="https://wa.me/918891236399?text=Hello%20decorspot%2C%20I%20have%20a%20question%20about%20your%20newborn%20sessions." target="_blank" rel="noopener noreferrer" class="btn-nav-whatsapp" style="background: rgba(255,255,255,0.7);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+              <span>Have a question? Ask on WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="faq-list">
+          <!-- Question 1 -->
+          <div class="faq-item active">
+            <button type="button" class="faq-question-btn" aria-expanded="true">
+              <span class="faq-question-text">When should we book?</span>
+              <span class="faq-toggle-circle">−</span>
+            </button>
+            <div class="faq-answer-wrap">
+              <p class="faq-answer-text">
+                Most families reach out during pregnancy and reserve a date between day 8 and week 10. If your baby is already here, message us—we will always look for a soft landing.
+              </p>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question-btn" aria-expanded="false">
+              <span class="faq-question-text">What happens during a session?</span>
+              <span class="faq-toggle-circle">+</span>
+            </button>
+            <div class="faq-answer-wrap">
+              <p class="faq-answer-text">
+                We spend around two to three unhurried hours together. There is plenty of time for feeding, settling, cuddling, and changing the rhythm when your baby asks us to.
+              </p>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question-btn" aria-expanded="false">
+              <span class="faq-question-text">Do you photograph older babies?</span>
+              <span class="faq-toggle-circle">+</span>
+            </button>
+            <div class="faq-answer-wrap">
+              <p class="faq-answer-text">
+                Yes. We love the growing seasons too—from tiny newborn days through sitter sessions and first birthdays. Tell us what season you are in and we will suggest the right shape.
+              </p>
+            </div>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question-btn" aria-expanded="false">
+              <span class="faq-question-text">Do you provide all props and outfits?</span>
+              <span class="faq-toggle-circle">+</span>
+            </button>
+            <div class="faq-answer-wrap">
+              <p class="faq-answer-text">
+                Yes! We have an extensive collection of heirloom organic swaddles, hand-knitted mohair bonnets, vintage wooden bowls, and delicate headbands. Everything is laundered with hypoallergenic baby-safe detergent before every session.
+              </p>
+            </div>
+          </div>
+
+          <!-- Question 5 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question-btn" aria-expanded="false">
+              <span class="faq-question-text">Are parents and siblings included?</span>
+              <span class="faq-toggle-circle">+</span>
+            </button>
+            <div class="faq-answer-wrap">
+              <p class="faq-answer-text">
+                Absolutely. Family bonding is at the heart of DecorSpot 2.0. We guide parents and older siblings into natural, loving cuddles that reveal genuine emotion without awkward posing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       ENQUIRY & CONTACT SECTION (#enquire)
+       ======================================================================== -->
+  <section class="enquire-section" id="enquire">
+    <div class="enquire-bg-circle"></div>
+
+    <div class="container">
+      <div class="enquire-grid">
+        <!-- Left Content -->
+        <div class="enquire-left-content">
+          <p class="enquire-eyebrow">let's make a little room</p>
+          <h2 class="enquire-headline">
+            Tell us about<br>
+            <span class="enquire-headline-terracotta">your people.</span>
+          </h2>
+
+          <p class="enquire-sub">
+            A name and a little hello is all we need to begin. We will come back with availability, a session guide, and an answer to every question.
+          </p>
+
+          <div class="enquire-direct-buttons">
+            <!-- Direct WhatsApp Button -->
+            <a href="https://wa.me/918891236399?text=Hello%20decorspot%2C%20I%27d%20love%20to%20know%20more%20about%20a%20newborn%20session." target="_blank" rel="noopener noreferrer" class="btn-enquire-whatsapp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+              <span>WhatsApp us directly</span>
+            </a>
+
+            <!-- Direct Instagram Button -->
+            <a href="https://www.instagram.com/decorspot2.0?stkn=cG9yaDgxZTJtbzA1&utm_source=qr" target="_blank" rel="noopener noreferrer" class="btn-enquire-insta">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              <span>Visit Instagram (@decorspot2.0)</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Interactive Enquiry Form -->
+        <div class="enquiry-card">
+          <!-- Form Submission State -->
+          <form id="enquiryForm">
+            <div class="form-group">
+              <label class="form-label" for="parentName">Your name</label>
+              <input type="text" id="parentName" class="form-input" placeholder="e.g. Asha &amp; Arjun" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="sessionType">We are enquiring about</label>
+              <div class="select-wrapper">
+                <select id="sessionType" class="form-select">
+                  <option value="newborn session">newborn session (5–21 days)</option>
+                  <option value="baby milestone session">baby milestone session (3–12 months)</option>
+                  <option value="maternity portraits">maternity portraits</option>
+                  <option value="family portraits">family portraits</option>
+                  <option value="something a little different">something a little different</option>
+                </select>
+                <svg class="select-caret" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="parentNotes">Baby's expected due date or age (optional)</label>
+              <input type="text" id="parentNotes" class="form-input" placeholder="e.g. Due next month / 2 weeks old" />
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-submit-enquiry" id="standardSubmitBtn">
+                <span>Start the conversation</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="btn-submit-whatsapp-direct" id="whatsappSubmitBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                </svg>
+                <span>Send Enquiry on WhatsApp</span>
+              </button>
+            </div>
+
+            <p class="form-privacy-note">
+              No mailing list. No pressure. Just a warm, thoughtful reply from our studio team.
+            </p>
+          </form>
+
+          <!-- Success Screen (revealed on submit) -->
+          <div class="enquiry-success-state" id="enquirySuccessState">
+            <span class="success-icon-badge">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
+            <h3 class="success-title">We have your hello.</h3>
+            <p class="success-body">
+              Thank you for reaching out to DecorSpot 2.0. We will get back to you shortly with our session guide and current availability.
+            </p>
+            <button type="button" class="btn-send-another" id="sendAnotherBtn">Send another enquiry</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">
+            <img src="canva_preview.jpg" alt="decorspot emblem" class="footer-avatar" onerror="this.src='logo.jpg'" />
+            <div>
+              <p class="footer-brand-title">decorspot</p>
+              <p class="footer-brand-sub">newborn studio / 2.0</p>
+            </div>
+          </div>
+
+          <p class="footer-promise">
+            Soft light. Slow mornings. Photographs that feel like home.
+          </p>
+        </div>
+
+        <div class="footer-links-group">
+          <a href="https://maps.google.com/?q=Muvattupuzha,+Ernakulam,+Kerala" target="_blank" rel="noopener noreferrer" class="footer-link footer-location-link" title="Open Google Maps Location">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Muvattupuzha, Ernakulam, Kerala</span>
+          </a>
+          
+          <a href="https://www.instagram.com/decorspot2.0?stkn=cG9yaDgxZTJtbzA1&utm_source=qr" target="_blank" rel="noopener noreferrer" class="footer-link" style="color: #e8c86e; font-weight: 600;">
+            Instagram: @decorspot2.0
+          </a>
+
+          <a href="https://wa.me/918891236399?text=Hello%20decorspot%2C%20I%27d%20love%20to%20know%20more%20about%20a%20newborn%20session." target="_blank" rel="noopener noreferrer" class="footer-link">
+            WhatsApp Hotline
+          </a>
+
+          <a href="#top" class="footer-link" style="display: inline-flex; align-items: center; gap: 4px;">
+            <span>Back to top</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 DecorSpot 2.0 Studio. All rights reserved. Designed for timeless newborn photography.</p>
+        <p>Instagram: <a href="https://www.instagram.com/decorspot2.0?stkn=cG9yaDgxZTJtbzA1&utm_source=qr" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">@decorspot2.0</a> | WhatsApp: <a href="https://wa.me/918891236399" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">+91 88912 36399</a> | Location: <a href="https://maps.google.com/?q=Muvattupuzha,+Ernakulam,+Kerala" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">Google Maps ↗</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       FLOATING ACTION REDIRECTION WIDGETS
+       ======================================================================== -->
+  <!-- Floating WhatsApp Quick-Chat Widget (Bottom Right) -->
+  <a href="https://wa.me/918891236399?text=Hello%20decorspot%2C%20I%27d%20love%20to%20know%20more%20about%20a%20newborn%20session." target="_blank" rel="noopener noreferrer" class="floating-whatsapp-btn" id="floatingWhatsAppBtn" title="Chat directly on WhatsApp with DecorSpot 2.0">
+    <div class="whatsapp-pulse-ring"></div>
+    <span class="whatsapp-online-dot"></span>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.5 0-2.97-.4-4.26-1.16l-.31-.18-3.16.83.84-3.08-.2-.32a8.217 8.217 0 0 1-1.26-4.43c0-4.56 3.71-8.27 8.27-8.27 2.21 0 4.29.86 5.85 2.43 1.57 1.56 2.43 3.64 2.43 5.85 0 4.56-3.71 8.27-8.27 8.27zm4.53-6.2c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.43 1.02 2.6c.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.59.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.18-.48-.3z"/>
+    </svg>
+    <span>Chat on WhatsApp</span>
+  </a>
+
+  <!-- Floating Instagram Tag Chip (Bottom Left) -->
+  <a href="https://www.instagram.com/decorspot2.0?stkn=cG9yaDgxZTJtbzA1&utm_source=qr" target="_blank" rel="noopener noreferrer" class="floating-insta-chip" title="Click to open Instagram profile @decorspot2.0">
+    <span class="insta-gradient-badge" style="width: 22px; height: 22px;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+      </svg>
+    </span>
+    <span>@decorspot2.0</span>
+  </a>
+
+  <!-- ========================================================================
+       LIGHTBOX MODAL
+       ======================================================================== -->
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-content-box">
+      <button type="button" class="lightbox-close-btn" id="lightboxCloseBtn" aria-label="Close image">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <img src="" alt="" class="lightbox-image" id="lightboxImg" />
+      <p class="lightbox-caption-text" id="lightboxCaption"></p>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-notice" id="toastNotice"></div>
+
+  <!-- Main Interaction Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
