@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DecorSpot 2.0 — Studio Admin Panel & CMS</title>
+  <meta name="description" content="Admin CMS panel for DecorSpot 2.0 Portrait Studio" />
+  <link rel="icon" type="image/svg+xml" href="logo.jpg" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .admin-page-wrap {
+      background-color: var(--color-cream);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .admin-top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(37, 63, 53, 0.12);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .admin-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+    .admin-brand img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .admin-top-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .admin-section {
+      padding: 40px 0 80px;
+      display: none;
+    }
+    .admin-section.authenticated {
+      display: block;
+    }
+    .admin-header {
+      margin-bottom: 32px;
+    }
+    .admin-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--color-terracotta);
+    }
+    .admin-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      color: var(--color-primary);
+      margin-top: 6px;
+    }
+    .admin-subtitle {
+      margin-top: 8px;
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+    }
+    .admin-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+      background: rgba(37, 63, 53, 0.05);
+      padding: 6px;
+      border-radius: 16px;
+    }
+    .admin-tab {
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .admin-tab:hover {
+      color: var(--color-primary);
+      background: rgba(255, 255, 255, 0.6);
+    }
+    .admin-tab.active {
+      background: #fff;
+      color: var(--color-primary);
+      box-shadow: 0 4px 12px rgba(37, 63, 53, 0.08);
+    }
+    .tab-badge {
+      background: var(--color-terracotta);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+    .admin-tab-panel {
+      display: none;
+    }
+    .admin-tab-panel.active {
+      display: block;
+      animation: fadeIn 0.25s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .admin-card {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(37, 63, 53, 0.12);
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-soft);
+    }
+    .admin-card-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--color-primary);
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .form-row {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    @media (min-width: 768px) {
+      .form-row { grid-template-columns: 1fr 1fr; }
+      .form-row.tri-col { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+    .admin-input, .admin-select, .admin-textarea {
+      width: 100%;
+      border: 1px solid rgba(37, 63, 53, 0.2);
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-size: 0.92rem;
+      color: var(--color-primary);
+      background: #fff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .admin-input:focus, .admin-select:focus, .admin-textarea:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(37, 63, 53, 0.1);
+      outline: none;
+    }
+    .admin-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(37, 63, 53, 0.75);
+      margin-bottom: 6px;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .admin-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--color-primary);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .admin-btn:hover {
+      background-color: var(--color-primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(37, 63, 53, 0.18);
+    }
+    .admin-btn.secondary {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(37, 63, 53, 0.25);
+      color: var(--color-primary);
+    }
+    .admin-btn.secondary:hover {
+      background: #fff;
+      border-color: var(--color-primary);
+    }
+    .admin-btn.terracotta {
+      background: var(--color-terracotta);
+    }
+    .admin-btn.terracotta:hover {
+      background: var(--color-terracotta-dark);
+    }
+    .admin-btn.danger {
+      background: #dc2743;
+    }
+    .admin-btn.danger:hover {
+      background: #b81e3a;
+    }
+    .admin-btn.small {
+      padding: 6px 14px;
+      font-size: 0.78rem;
+    }
+    .gallery-categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .category-tag {
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: rgba(37, 63, 53, 0.08);
+      color: var(--color-primary);
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+    }
+    .category-tag.active {
+      background: var(--color-primary) !important;
+      color: #fff !important;
+    }
+    .category-tag.newborn { background: rgba(198, 133, 109, 0.15); color: var(--color-terracotta); }
+    .category-tag.maternity { background: rgba(243, 200, 174, 0.4); color: #b86241; }
+    .category-tag.prewedding { background: rgba(232, 200, 110, 0.35); color: #9c7827; }
+    .category-tag.birthday { background: rgba(250, 230, 158, 0.5); color: #8e6812; }
+    .category-tag.commercial { background: rgba(37, 63, 53, 0.14); color: var(--color-primary-dark); }
+    .category-tag.family { background: rgba(216, 225, 214, 0.4); color: var(--color-forest); }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .photo-item {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid rgba(37, 63, 53, 0.12);
+      background: var(--color-biscuit);
+    }
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .photo-actions {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      display: flex;
+      gap: 6px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .photo-item:hover .photo-actions {
+      opacity: 1;
+    }
+    .photo-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .photo-btn.edit { background: var(--color-primary); }
+    .photo-btn.del { background: #dc2743; }
+    .photo-upload-area {
+      border: 2px dashed rgba(37, 63, 53, 0.25);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: rgba(255, 255, 255, 0.5);
+    }
+    .photo-upload-area:hover, .photo-upload-area.drag-over {
+      border-color: var(--color-terracotta);
+      background: rgba(243, 200, 174, 0.15);
+    }
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
+      margin-top: 8px;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      background: #fff;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(37, 63, 53, 0.1);
+      font-size: 0.9rem;
+    }
+    .checkbox-item input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--color-primary);
+    }
+    /* Leads Table */
+    .leads-table-wrap {
+      overflow-x: auto;
+    }
+    .leads-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+    .leads-table th {
+      background: rgba(37, 63, 53, 0.05);
+      padding: 12px 16px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-primary);
+      border-bottom: 2px solid rgba(37, 63, 53, 0.1);
+    }
+    .leads-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(37, 63, 53, 0.08);
+      vertical-align: middle;
+    }
+    .lead-status-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .lead-status-badge.new { background: #d4edda; color: #155724; }
+    .lead-status-badge.contacted { background: #cce5ff; color: #004085; }
+    .lead-status-badge.booked { background: #fff3cd; color: #856404; }
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 2000;
+      background: var(--color-primary-dark);
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast.success { background: #1ebe5d; }
+    .toast.error { background: #dc2743; }
+    /* Login Modal */
+    .login-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: var(--color-cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 1;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .login-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .login-card {
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(37, 63, 53, 0.12);
+      border-radius: 24px;
+      padding: 40px;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: var(--shadow-elevated);
+      text-align: center;
+    }
+    .login-logo {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--color-terracotta);
+      margin: 0 auto 16px;
+    }
+  </style>
+</head>
+<body class="admin-page-wrap">
+
+  <!-- Top Sticky Bar -->
+  <header class="admin-top-bar">
+    <div class="admin-brand">
+      <img src="logo.jpg" alt="DecorSpot Logo" />
+      <span>DecorSpot 2.0 Studio CMS</span>
+    </div>
+    <div class="admin-top-actions">
+      <a href="index.html" class="admin-btn secondary small" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        <span>View Live Site</span>
+      </a>
+      <button class="admin-btn secondary small" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- Main Admin Section -->
+  <main class="admin-section">
+    <div class="container">
+      <header class="admin-header">
+        <p class="admin-eyebrow">all-in-one studio management</p>
+        <h1 class="admin-title">Studio Control Center</h1>
+        <p class="admin-subtitle">Update photoshoot offerings, gallery images, customer leads, pricing packages, and contact information in real-time.</p>
+      </header>
+
+      <!-- Navigation Tabs -->
+      <nav class="admin-tabs" role="tablist">
+        <button class="admin-tab active" role="tab" data-tab="leads">
+          📬 Customer Inquiries
+          <span class="tab-badge" id="leadsCountBadge">0</span>
+        </button>
+        <button class="admin-tab" role="tab" data-tab="services">
+          📸 Photoshoot Services
+        </button>
+        <button class="admin-tab" role="tab" data-tab="photos">
+          🖼️ Gallery Photos
+        </button>
+        <button class="admin-tab" role="tab" data-tab="packages">
+          🎁 Packages & Pricing
+        </button>
+        <button class="admin-tab" role="tab" data-tab="studio">
+          🏛️ Studio Details & Hero
+        </button>
+        <button class="admin-tab" role="tab" data-tab="contact">
+          📱 Contact & Social
+        </button>
+        <button class="admin-tab" role="tab" data-tab="faqs">
+          ❓ FAQs
+        </button>
+        <button class="admin-tab" role="tab" data-tab="backup">
+          ⚙️ Backup & Security
+        </button>
+      </nav>
+
+      <!-- TAB 1: CUSTOMER INQUIRIES / LEADS -->
+      <section class="admin-tab-panel active" role="tabpanel" id="tab-leads">
+        <div class="admin-card">
+          <div class="admin-card-title">
+            <span>Customer Inquiries & WhatsApp Leads</span>
+            <div style="display:flex;gap:8px;">
+              <button class="admin-btn secondary small" id="exportLeadsBtn">Export CSV</button>
+              <button class="admin-btn danger small" id="clearLeadsBtn">Clear All</button>
+            </div>
+          </div>
+          <p style="font-size:0.9rem;color:var(--color-text-muted);margin-bottom:16px;">
+            Inquiries submitted by parents and clients on your website enquiry form appear here automatically. You can review their notes and click <strong>"Chat on WhatsApp"</strong> to start an instant personalized chat!
+          </p>
+          <div class="leads-table-wrap">
+            <table class="leads-table">
+              <thead>
+                <tr>
+                  <th>Client Name</th>
+                  <th>Session Inquired</th>
+                  <th>Phone / WhatsApp</th>
+                  <th>Preferred Date / Notes</th>
+                  <th>Submission Time</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="leadsTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: PHOTOSHOOT SERVICES -->
+      <section class="admin-tab-panel" role="tabpanel" id="tab-services">
+        <div class="admin-card">
+          <div class="admin-card-title">
+            <span>Studio Photoshoot Services & Specializations</span>
+            <button class="admin-btn terracotta small" id="addServiceBtn">+ Add New Service</button>
+          </div>
+          <p style="font-size:0.9rem;color:var(--color-text-muted);margin-bottom:20px;">
+            DecorSpot 2.0 covers all photoshoot categories: Newborn, Maternity, Pre-Wedding, Birthday & Cake Smash, Commercial & Brand, and Family Portraits. Edit details, images, and highlight bullets below:
+          </p>
+          <div id="servicesList">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: GALLERY PHOTOS -->
+      <section class="admin-tab-panel" role="tabpanel" id="tab-photos">
+        <div class="admin-card">
+          <h2 class="admin-card-title">Upload New Photo</h2>
+          <div class="photo-upload-area" id="uploadArea">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40" style="margin:0 auto 10px;color:var(--color-terracotta);display:block;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            <p style="font-weight:600;color:var(--color-primary);">Drag & drop photo files here or click to browse</p>
+            <p style="font-size:0.8rem;color:var(--color-text-muted);margin-top:4px;">Supports JPG, PNG, WebP • Auto-stored in browser memory</p>
+            <input type="file" id="photoInput" multiple accept="image/*" style="display:none;" />
+          </div>
+          <div class="form-row tri-col" style="margin-top:16px;">
+            <div>
+              <label class="admin-label">Category</label>
+              <select class="admin-select" id="newPhotoCategory">
+                <option value="newborn">Newborn & Baby</option>
+                <option value="maternity">Maternity & Motherhood</option>
+                <option value="prewedding">Pre-Wedding & Couples</option>
+                <option value="birthday">Birthdays & Milestones</option>
+                <option value="commercial">Commercial & Brand</option>
+                <option value="family">Family & Tender Moments</option>
+                <option value="details">Tiny Details & Hands</option>
+              </select>
+            </div>
+            <div>
+              <label class="admin-label">Grid Layout Size</label>
+              <select class="admin-select" id="newPhotoSize">
+                <option value="col-span-6">Medium (Half Width - 6 col)</option>
+                <option value="col-span-7-row-2">Featured Portrait (Large - 7 col, 2 row)</option>
+                <option value="col-span-5">Standard (5 col)</option>
+                <option value="col-span-12">Full Width Banner (12 col)</option>
+              </select>
+            </div>
+            <div>
+              <label class="admin-label">Caption / Story Name</label>
+              <input type="text" class="admin-input" id="newPhotoCaption" placeholder="e.g. golden hour embrace" />
+            </div>
+          </div>
+          <div style="display:flex;gap:12px;margin-top:8px;">
+            <button class="admin-btn" id="uploadBtn" disabled>Upload Selected Photos</button>
+            <button class="admin-btn secondary" id="addPhotoByUrlBtn">+ Add by Image URL</button>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-title">
+            <span>Manage Gallery Images</span>
+            <span style="font-size:0.82rem;font-family:var(--font-mono);color:var(--color-text-muted);" id="photoTotalBadge"></span>
+          </div>
+          <div class="gallery-categories" id="adminGalleryFilters">
+            <span class="category-tag active" data-cat="all">All Stories</span>
+            <span class="category-tag newborn" data-cat="newborn">Newborn & Baby</span>
+            <span class="category-tag maternity" data-cat="maternity">Maternity</span>
+            <span class="category-tag prewedding" data-cat="prewedding">Pre-Wedding</span>
+            <span class="category-tag birthday" data-cat="birthday">Birthdays</span>
+            <span class="category-tag commercial" data-cat="commercial">Commercial</span>
+            <span class="category-tag family" data-cat="family">Family</span>
+            <span class="category-tag" data-cat="details">Details</span>
+          </div>
+          <div class="photo-grid" id="photoGrid"></div>
+        </div>
+      </section>
+
+      <!-- TAB 4: PACKAGES & PRICING -->
+      <section class="admin-tab-panel" role="tabpanel" id="tab-packages">
+        <div class="admin-card">
+          <div class="admin-card-title">
+            <span>Pricing Packages & Collections</span>
+            <button class="admin-btn terracotta small" id="addPackageBtn">+ Add New Package</button>
+          </div>
+          <p style="font-size:0.9rem;color:var(--color-text-muted);margin-bottom:20px;">
+            Create packages for Newborn, Maternity, Pre-Wedding, Birthdays, and Commercial shoots. Clients will see these categorized in the "Packages" section on your website.
+          </p>
+          <div id="packagesList"></div>
+        </div>
+      </section>
+
+      <!-- TAB 5: STUDIO DETAILS & HERO -->
+      <section class="admin-tab-panel" role="tabpanel" id="tab-studio">
+        <div class="admin-card">
+          <h2 class="admin-card-title">Hero Section & Branding</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="admin-label">Studio Brand Name</label>
+              <input type="text" class="admin-input" id="studioName" placeholder="DecorSpot 2.0" />
+            </div>
+            <div class="form-group">
+              <label class="admin-label">Studio Subtitle</label>
+              <input type="text" class="admin-input" id="studioSubtitle" placeholder="newborn & creative portrait studio" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="admin-label">Hero Eyebrow Label</label>
+              <input type="text" class="admin-input" id="heroEyebrow" placeholder="fine art & boutique portrait studio" />
+            </div>
+            <div class="form-group">
+              <label class="admin-label">Booking Banner Alert</label>
+              <input type="text" class="admin-input" id="bookingNote" placeholder="Now reserving newborn, maternity, pre-wedding & commercial dates" />
+            </div>
+          </div>
+          <div class="form-group full-width" style="margin-bottom:16px;">
+            <label class="admin-label">Hero Headline Tagline (use Enter for line break)</label>
+            <input type="text" class="admin-input" id="heroTagline" placeholder="Every chapter,&#10;beautifully captured." />
+          </div>
+          <div class="form-group full-width" style="margin-bottom:20px;">
+            <label class="admin-label">Hero Body Description</label>
+            <textarea class="admin-textarea" id="heroDesc" rows="3" placeholder="A warm, boutique photography studio in Muvattupuzha, Kerala..."></textarea>
+          </div>
+          <button class="admin-btn" id="saveStudioBtn">Save Studio Branding</button>
+        </div>
+
+        <div class="admin-card">
+          <h2 class="admin-card-title">Studio Amenities & Feature Badges</h2>
+          <div class="checkbox-group">
+            <label class="checkbox-item"><input type="checkbox" id="featSanitized"> Hospital-Grade Sanitized Suite</label>
+            <label class="checkbox-item"><input type="checkbox" id="featClimate"> Cozy 28°C Climate Control</label>
+            <label class="checkbox-item"><input type="checkbox" id="featBabyLed"> 100% Baby-Led Pacing</label>
+            <label class="checkbox-item"><input type="checkbox" id="featWardrobe"> Curated Luxury Wardrobe</label>
+            <label class="checkbox-item"><input type="checkbox" id="featAlbums"> Handcrafted Keepsake Albums</label>
+            <label class="checkbox-item"><input type="checkbox" id="featCommercialRig"> Commercial 4K Lighting Rig</label>
+            <label class="checkbox-item"><input type="checkbox" id="featOutdoorSets"> Outdoor Pre-Wedding Sets</label>
+          </div>
+          <button class="admin-btn" id="saveFeaturesBtn" style="margin-top:20px;">Save Amenities</button>
+        </div>
+      </section>
+
+      <!-- TAB 6: CONTACT & SOCIAL -->
+      <section class="admin-tab-panel" role="tabpanel" id="tab-contact">
+        <div class="admin-card">
+          <h2 class="admin-card-title">WhatsApp Integration</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="admin-label">WhatsApp Number (Display)</label>
+              <input type="tel" class="admin-input" id="waNumber" placeholder="+91 88912 36399" />
+            </div>
+            <div class="form-group">
+              <label class="admin-label">Clean Number (for wa.me links)</label>
+              <input type="text" class="admin-input" id="waCleanNumber" placeholder="918891236399" />
+            </div>
+          </div>
+          <div class="form-group full-width">
+            <label class="admin-label">Default WhatsApp Enquiry Message</label>
+            <textarea class="admin-textarea" id="waDefaultMsg" rows="2" placeholder="Hello DecorSpot Studio! I would love to enquire about booking a photoshoot session."></textarea>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <h2 class="admin-card-title">Instagram & Location</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="admin-label">Instagram Handle</label>
+              <input type="text" class="admin-input" id="instaHandle" placeholder="@decorspot2.0" />
+            </div>
+            <div class="form-group">
+              <label class="admin-label">Instagram Profile URL</label>
+              <input type="url" class="admin-input" id="instaUrl" placeholder="https://www.instagram.com/decorspot2.0" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="admin-label">Location / City Display</label>
+              <input type="text" class="admin-input" id="locationDisplay" placeholder="Muvattupuzha, Ernakulam, Kerala" />
+            </div>
+            <div class="form-group">
+              <label class="admin-label">Google Maps URL</label>
+              <input type="url" class="admin-input" id="mapsUrl" placeholder="https://maps.google.com/?q=..." />
+            </div>
+          </div>
+          <div class="form-group full-width">
+            <label class="admin-label">Studio Working Hours</label>
+            <input type="text" class="admin-input" id="workingHours" placeholder="Tue – Sun: 9:00 AM – 6:30 PM (Mondays by appointment)" />
+          </div>
+          <button class="admin-btn" id="saveContactBtn" style="margin-top:12px;">Save Contact & Social Details</button>
+        </div>
+      </section>
+
+      <!-- TAB 7: FAQS -->
+      <section class="admin-tab-panel" role="tabpanel" id="tab-faqs">
+        <div class="admin-card">
+          <div class="admin-card-title">
+            <span>Frequently Asked Questions</span>
+            <button class="admin-btn terracotta small" id="addFaqBtn">+ Add New FAQ</button>
+          </div>
+          <p style="font-size:0.9rem;color:var(--color-text-muted);margin-bottom:20px;">
+            Answers to client queries across newborn, maternity, pre-wedding, birthdays, props, and turnaround times.
+          </p>
+          <div id="faqsList"></div>
+        </div>
+      </section>
+
+      <!-- TAB 8: BACKUP & SECURITY -->
+      <section class="admin-tab-panel" role="tabpanel" id="tab-backup">
+        <div class="admin-card">
+          <h2 class="admin-card-title">Data Backup & Restore</h2>
+          <p style="font-size:0.9rem;color:var(--color-text-muted);margin-bottom:16px;">
+            Export a full JSON backup of all your photos, services, packages, and studio settings. You can restore this backup anytime on any device.
+          </p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <button class="admin-btn" id="exportDataBtn">Download Full Backup (JSON)</button>
+            <button class="admin-btn secondary" id="importDataBtn">Restore From Backup (JSON)</button>
+            <input type="file" id="importFileInput" accept=".json" style="display:none;" />
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <h2 class="admin-card-title">Security & Password</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="admin-label">New Admin Password</label>
+              <input type="password" class="admin-input" id="newPassword" placeholder="Enter new password" />
+            </div>
+            <div class="form-group">
+              <label class="admin-label">Confirm Password</label>
+              <input type="password" class="admin-input" id="confirmPassword" placeholder="Confirm new password" />
+            </div>
+          </div>
+          <button class="admin-btn" id="changePasswordBtn">Update Password</button>
+        </div>
+
+        <div class="admin-card" style="border-color:rgba(220, 39, 67, 0.3);">
+          <h2 class="admin-card-title" style="color:#dc2743;">Reset to Factory Defaults</h2>
+          <p style="font-size:0.9rem;color:var(--color-text-muted);margin-bottom:16px;">
+            Reset all studio text, photos, services, and packages back to original DecorSpot 2.0 defaults.
+          </p>
+          <button class="admin-btn danger" id="resetDefaultsBtn">Reset All Data to Defaults</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Login Modal Screen -->
+  <div class="login-screen" id="loginScreen" role="dialog" aria-modal="true">
+    <div class="login-card">
+      <img src="logo.jpg" alt="DecorSpot Logo" class="login-logo" />
+      <h2 style="font-family:var(--font-display);color:var(--color-primary);font-size:1.8rem;margin-bottom:6px;">Studio Admin Portal</h2>
+      <p style="font-size:0.88rem;color:var(--color-text-muted);margin-bottom:24px;">Sign in to customize your DecorSpot 2.0 website</p>
+
+      <form id="loginForm">
+        <div class="form-group" style="text-align:left;margin-bottom:14px;">
+          <label class="admin-label" for="loginEmail">Email Address</label>
+          <input type="email" class="admin-input" id="loginEmail" placeholder="admin@decorspot.in" value="admin@decorspot.in" required />
+        </div>
+        <div class="form-group" style="text-align:left;margin-bottom:20px;">
+          <label class="admin-label" for="loginPassword">Password</label>
+          <input type="password" class="admin-input" id="loginPassword" placeholder="decorspopt2.0" value="decorspopt2.0" required />
+        </div>
+        <button type="submit" class="admin-btn" style="width:100%;justify-content:center;padding:13px;">Sign In to Dashboard</button>
+      </form>
+
+      <div style="margin-top:14px;padding:10px 14px;background:rgba(37,63,53,0.06);border-radius:10px;font-size:0.8rem;color:var(--color-text-muted);text-align:center;">
+        Default login: <strong style="color:var(--color-primary);">admin@decorspot.in</strong> / <strong style="color:var(--color-primary);">decorspopt2.0</strong>
+      </div>
+
+      <div style="margin-top:16px;">
+        <a href="index.html" style="font-size:0.85rem;color:var(--color-text-muted);text-decoration:underline;">← Return to Public Website</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notice -->
+  <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="admin.js"></script>
+</body>
+</html>

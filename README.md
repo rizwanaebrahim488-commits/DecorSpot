@@ -1,73 +1,87 @@
-# DecorSpot 2.0 — Newborn & Baby Portrait Studio Website
+# DecorSpot 2.0 — Comprehensive Portrait & Commercial Photography Studio
 
-A luxury, boutique newborn and baby portrait studio website created for **DecorSpot 2.0**, inspired by the brand identity from Canva and the aesthetic architecture of the Replit reference site.
+A luxury, boutique photography studio website and built-in Admin CMS for **DecorSpot 2.0** in Muvattupuzha, Ernakulam, Kerala.
+
+Specializing in **all types of photoshoots**:
+- 👶 **Newborn & Baby Portraits** (Signature hospital-grade sanitized 28°C suite, 100% baby-led pacing)
+- 🌸 **Maternity & Motherhood Stories** (Designer gowns, glowing natural light, partner & family bump portraits)
+- 💍 **Pre-Wedding & Couples Photography** (Cinematic love stories, picturesque outdoor Kerala spots & aesthetic studio sets)
+- 🎂 **Birthday Celebrations & Cake Smash** (Bespoke whimsical theme backdrops, mess-friendly cake smash, splash cleanup)
+- 💼 **Commercial, Fashion & Brand Imagery** (Studio 4K strobe lighting, product styling, e-commerce, lookbooks, executive profiles)
+- 👨‍👩‍👧‍👦 **Family & Generational Portraits** (Natural, unforced connection celebrating generations together)
 
 ---
 
 ## 🌟 Key Features
 
-1. **Brand Identity & Logo Integration**:
-   - Built around the official brand emblem: `canva_preview.jpg` / `decorspot-logo.svg`.
+1. **Brand Identity & Aesthetic Architecture**:
+   - Built around the official brand emblem: `canva_preview.jpg` / `logo.jpg`.
    - Editorial typography utilizing Google Fonts: `Fraunces` (warm editorial display serif), `DM Sans` (clean modern body), and `Space Mono` (bespoke studio badge monospace).
    - Soothing, high-end organic color palette (Sage `#d8e1d6`, Warm Linen `#f5ecdf`, Biscuit `#e9d7c7`, Terracotta `#c6856d`, Soft Ochre `#eecf79`, Deep Forest Evergreen `#253f35`).
 
-2. **Instagram Tag & Redirection**:
-   - Direct Instagram Tag: **`@decorspot2.0`**
-   - Clickable Instagram profile link: `https://www.instagram.com/decorspot2.0?stkn=cG9yaDgxZTJtbzA1&utm_source=qr`
-   - Integrated across the header, social proof strip, community gallery showcase banner, contact section, footer, and floating bottom-left quick-chip.
-   - Built-in 1-click clipboard copy with toast notification.
+2. **Full Studio Specializations Section (`#services`)**:
+   - Dedicated interactive section presenting all 6 photoshoot services.
+   - Each card features custom imagery, category tag, badge, description, bullet inclusions, and direct 1-click WhatsApp enquiry with pre-filled session text.
 
-3. **WhatsApp Redirection & Instant Booking**:
+3. **Multi-Category Filterable Gallery (`#gallery`)**:
+   - Bento masonry layout with category filter pills: *All Stories*, *Newborn & Baby*, *Maternity & Motherhood*, *Pre-Wedding & Couples*, *Birthdays & Milestones*, *Commercial & Brand*, and *Family & Details*.
+   - Interactive full-screen Lightbox modal with zoom and captions.
+
+4. **Multi-Category Packages (`#packages`)**:
+   - Filterable collections with custom quote requests for any category.
+   - Includes transparent highlights, popular badges ("Most Cherished"), and 1-click WhatsApp booking buttons.
+
+5. **Customer Leads & WhatsApp Integration**:
    - WhatsApp Number: **`+91 88912 36399`** (`wa.me/918891236399`)
-   - Pre-formatted, welcoming inquiry messages:
-     - Header "Enquire" & Hero CTA: *"Hello decorspot, I'd love to know more about a newborn session."*
-     - Package inquiries: automatically specifies package name (*"Little Dreamer"*, *"Cherished Miracle"*, *"The Heirloom Story"*).
-     - Interactive Form: dynamically takes parent's name, chosen session, and notes to compose a personalized WhatsApp chat handoff.
-   - Persistent, animated Floating WhatsApp Button with pulse ring and live online indicator.
+   - Interactive Enquiry Form saves leads into the **Admin Panel Inbox** (`localStorage`) and offers 1-click personalized WhatsApp chat launch.
+   - Instagram: **`@decorspot2.0`** with 1-click clipboard copy.
+   - Google Maps Location: [Muvattupuzha, Ernakulam, Kerala](https://maps.google.com/?q=Muvattupuzha,+Ernakulam,+Kerala).
 
-4. **Google Maps Redirection**:
-   - Direct Google Maps Location: [Muvattupuzha, Ernakulam, Kerala](https://maps.google.com/?q=Muvattupuzha,+Ernakulam,+Kerala)
-   - Clickable in the footer navigation, social proof strip, and footer bottom bar with interactive hover elevation.
+---
 
-5. **Curated Sections**:
-   - **Hero Section**: Editorial headline *"Little moments, beautifully held"*, organic rounded photo arch frame, and floating badges.
-   - **Our Approach ("The DecorSpot Way")**: 3-step baby-led process cards, plus studio safety & climate-controlled suite guarantees.
-   - **Bento Gallery & Lightbox**: Filterable by categories (*All Stories*, *Fresh Newborn*, *Tiny Details*, *Family & Bonding*) with full-screen zoom modal.
-   - **Curated Collections / Packages**: Transparent 3-tier collections (*Little Dreamer*, *Cherished Miracle*, *The Heirloom Story*) with direct WhatsApp booking links.
-   - **Good to Know (FAQ)**: Interactive accordion resolving essential questions regarding timing, baby-led pauses, props, and family inclusion.
-   - **Enquiry Form**: Thoughtful contact form with both standard submission confirmation and instant 1-click WhatsApp handoff.
+## ⚙️ Studio Admin Panel & CMS (`admin.html`)
+
+A complete web-based Content Management System that allows the studio owner to edit all website details without writing code:
+
+### How to Access:
+- Click **"Studio Admin Panel ↗"** in the website header or footer, or open **`admin.html`** in your browser.
+- **Default Credentials:**
+  - **Email:** `admin@decorspot.in`
+  - **Password:** `decorspopt2.0` (also accepts `decorspot2.0`)
+
+### Admin Capabilities:
+1. **📬 Customer Inquiries & Leads**:
+   - Review leads submitted by clients through the website form.
+   - View Client Name, Phone, Session Type, Preferred Date / Notes, and Submission Time.
+   - Click **"WhatsApp"** to open a pre-filled direct reply to the client.
+   - Update lead status (*New*, *Contacted*, *Booked*) or export leads as a CSV file.
+2. **📸 Photoshoot Services Manager**:
+   - Edit the 6 photoshoot types (title, description, image, badge, highlights list, custom WhatsApp message).
+   - Add new services or remove services.
+3. **🖼️ Gallery Photos Manager**:
+   - Upload new photos via drag-and-drop or file picker (supports multiple files, auto-stored as Base64 in browser memory).
+   - Add photos via Image URL.
+   - Filter by category, edit captions, alt text, category, or grid size.
+   - Delete photos.
+4. **🎁 Packages & Pricing Manager**:
+   - Edit existing packages across all categories or add new packages.
+   - Customize highlights, popular highlight badge, and button colors.
+5. **🏛️ Studio Details & Hero Branding**:
+   - Edit Studio Name, Subtitle, Hero Eyebrow, Hero Tagline, Hero Body, and Booking Note.
+   - Toggle studio amenities (Sanitized suite, climate control, baby-led, luxury wardrobe, commercial rig, outdoor sets).
+6. **📱 Contact & Social Settings**:
+   - Update WhatsApp numbers, default message, Instagram URL/handle, address display, Google Maps URL, and working hours.
+7. **❓ FAQs Manager**:
+   - Add, edit, or delete questions and answers.
+8. **⚙️ Backup & Security**:
+   - **Download Full Backup (JSON)**: Export all website data to a file.
+   - **Restore From Backup (JSON)**: Restore full site data from a previously saved JSON file.
+   - **Change Admin Password**: Set a custom password.
+   - **Reset to Defaults**: Restore original factory DecorSpot 2.0 settings.
 
 ---
 
 ## 🚀 How to Launch and View
 
-1. **Directly in your Browser**:
-   - Navigate to `c:\Users\User_PC\OneDrive\Desktop\DecorSpot\`
-   - Double-click **`index.html`** or right-click and choose **Open with Google Chrome / Microsoft Edge / Brave**.
-   - The website loads instantly with zero dependencies and works 100% offline or online.
-
-2. **Using a Local Server (Optional)**:
-   - If you have Python installed:
-     ```bash
-     python -m http.server 3000
-     ```
-   - Open `http://localhost:3000` in your browser.
-
----
-
-## ⚙️ Customization Settings
-
-To update contact details, phone numbers, or Instagram handles in the future, open `script.js` and modify the top configuration object:
-
-```javascript
-const DECORS_CONFIG = {
-  studioName: "DecorSpot 2.0",
-  whatsappNumber: "+918891236399", // Studio WhatsApp Number with Country Code
-  whatsappCleanNumber: "918891236399",
-  instagramUrl: "https://www.instagram.com/decorspot2.0?stkn=cG9yaDgxZTJtbzA1&utm_source=qr",
-  instagramTag: "@decorspot2.0",
-  city: "Muvattupuzha, Ernakulam, Kerala",
-  googleMapsUrl: "https://maps.google.com/?q=Muvattupuzha,+Ernakulam,+Kerala",
-  defaultWhatsAppMessage: "Hello decorspot, I'd love to know more about a newborn session."
-};
-```
+1. **Public Website**: Open **`index.html`** in any web browser.
+2. **Admin Panel**: Open **`admin.html`** in any web browser.
