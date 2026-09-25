@@ -12,7 +12,7 @@ const DEFAULT_DATA = {
     name: "DecorSpot 2.0",
     subtitle: "newborn & creative portrait studio",
     heroEyebrow: "fine art & boutique portrait studio",
-    heroTagline: "Every chapter,\nbeautifully captured.",
+    heroTagline: "Little moments,\nbeautifully held.",
     heroDesc: "A warm, boutique photography studio in Muvattupuzha, Kerala. Specializing in timeless newborn & baby sessions, glowing maternity stories, cinematic pre-weddings, joyful birthdays, and refined commercial brand imagery.",
     bookingNote: "Now reserving newborn, maternity, pre-wedding & commercial dates",
     features: {

@@ -55,19 +55,34 @@ const server = http.createServer((req, res) => {
   });
 });
 
-server.listen(PORT, '127.0.0.1', () => {
-  console.log(`\n======================================================`);
-  console.log(`🚀 DecorSpot 2.0 Local Development Server is RUNNING!`);
-  console.log(`👉 Public Website:  http://localhost:${PORT}/`);
-  console.log(`👉 Admin Panel:     http://localhost:${PORT}/admin.html`);
-  console.log(`======================================================\n`);
+function getLocalIP() {
+  const ifaces = require('os').networkInterfaces();
+  for (const name of Object.keys(ifaces)) {
+    for (const net of ifaces[name]) {
+      if (net.family === 'IPv4' && !net.internal) {
+        return net.address;
+      }
+    }
+  }
+  return 'localhost';
+}
+
+const LOCAL_IP = getLocalIP();
+
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`\n==================================================================`);
+  console.log(`🚀 DecorSpot 2.0 Server is RUNNING for PC & Mobile Testing!`);
+  console.log(`💻 PC / Localhost:  http://localhost:${PORT}/`);
+  console.log(`📱 Phone (Wi-Fi):   http://${LOCAL_IP}:${PORT}/`);
+  console.log(`🔑 Admin on Phone:  http://${LOCAL_IP}:${PORT}/admin.html`);
+  console.log(`==================================================================\n`);
 });
 
 server.on('error', (err) => {
   if (err.code === 'EADDRINUSE') {
     const nextPort = Number(PORT) + 1;
     console.warn(`Port ${PORT} in use, trying port ${nextPort}...`);
-    server.listen(nextPort, '127.0.0.1');
+    server.listen(nextPort, '0.0.0.0');
   } else {
     console.error('Server error:', err);
   }

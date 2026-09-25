@@ -449,20 +449,24 @@ button, input, select, textarea {
 
 @media (min-width: 900px) {
   .hero-grid {
-    grid-template-columns: 0.95fr 1.05fr;
-    gap: 56px;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
   }
 }
 
 .hero-content {
-  max-width: 580px;
+  max-width: 530px;
+  min-width: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-eyebrow-wrap {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .hero-eyebrow {
@@ -475,25 +479,29 @@ button, input, select, textarea {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(3.4rem, 7vw, 6.8rem);
-  line-height: 0.92;
-  letter-spacing: -0.065em;
+  font-size: clamp(2.5rem, 4.4vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
   color: var(--color-primary);
   font-weight: 500;
-  white-space: pre-line;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: normal;
+  max-width: 100%;
 }
 
 .hero-body {
-  margin-top: 28px;
-  max-width: 440px;
-  font-size: 1.08rem;
-  line-height: 1.7;
+  margin-top: 24px;
+  max-width: 460px;
+  font-size: 1.05rem;
+  line-height: 1.65;
   color: rgba(37, 63, 53, 0.82);
 }
 
 /* Call to action group */
 .hero-cta-group {
-  margin-top: 36px;
+  margin-top: 32px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -541,12 +549,14 @@ button, input, select, textarea {
 
 /* Booking note */
 .hero-booking-note {
-  margin-top: 40px;
+  margin-top: 36px;
   display: flex;
   align-items: center;
   gap: 12px;
   font-size: 0.88rem;
   color: rgba(37, 63, 53, 0.7);
+  position: relative;
+  z-index: 2;
 }
 
 .hero-note-line {
@@ -559,8 +569,9 @@ button, input, select, textarea {
 .hero-visual {
   position: relative;
   width: 100%;
-  max-width: 620px;
+  max-width: 530px;
   margin: 0 auto;
+  z-index: 1;
 }
 
 .hero-arch-frame {
@@ -1799,39 +1810,9 @@ button, input, select, textarea {
   position: relative;
 }
 
-/* Floating Instagram Tag Chip (Bottom Left) */
+/* Floating Instagram Tag Chip - disabled to prevent covering booking note */
 .floating-insta-chip {
-  position: fixed;
-  bottom: 24px;
-  left: 24px;
-  z-index: 99;
-  display: none;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(220, 39, 67, 0.25);
-  border-radius: 9999px;
-  padding: 8px 16px;
-  box-shadow: 0 8px 24px rgba(37, 63, 53, 0.08);
-  backdrop-filter: blur(10px);
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  transition: all 0.25s ease;
-  text-decoration: none;
-}
-
-@media (min-width: 640px) {
-  .floating-insta-chip {
-    display: inline-flex;
-  }
-}
-
-.floating-insta-chip:hover {
-  transform: translateY(-2px);
-  border-color: #dc2743;
-  color: #dc2743;
-  box-shadow: 0 10px 28px rgba(220, 39, 67, 0.2);
+  display: none !important;
 }
 
 /* ==========================================================================

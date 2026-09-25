@@ -11,7 +11,7 @@ const DEFAULT_DATA = {
     name: "DecorSpot 2.0",
     subtitle: "newborn & creative portrait studio",
     heroEyebrow: "fine art & boutique portrait studio",
-    heroTagline: "Every chapter,\nbeautifully captured.",
+    heroTagline: "Little moments,\nbeautifully held.",
     heroDesc: "A warm, boutique photography studio in Muvattupuzha, Kerala. Specializing in timeless newborn & baby sessions, glowing maternity stories, cinematic pre-weddings, joyful birthdays, and refined commercial brand imagery.",
     bookingNote: "Now reserving newborn, maternity, pre-wedding & commercial dates",
     features: {
@@ -812,7 +812,16 @@ function applyConfigToDOM() {
   if (heroEyebrow && config.heroEyebrow) heroEyebrow.textContent = config.heroEyebrow;
 
   const heroTitle = document.querySelector('.hero-title');
-  if (heroTitle) heroTitle.innerHTML = config.heroTagline.replace(/\n/g, '<br>');
+  if (heroTitle && config.heroTagline) {
+    let cleanTagline = config.heroTagline.replace(/,([^\s\n])/g, ', $1');
+    if (cleanTagline.includes('\n')) {
+      heroTitle.innerHTML = cleanTagline.replace(/\n+/g, '<br>');
+    } else if (cleanTagline.includes(',')) {
+      heroTitle.innerHTML = cleanTagline.replace(/,\s*/, ',<br>');
+    } else {
+      heroTitle.textContent = cleanTagline;
+    }
+  }
 
   const heroBody = document.querySelector('.hero-body');
   if (heroBody) heroBody.textContent = config.heroDesc;
