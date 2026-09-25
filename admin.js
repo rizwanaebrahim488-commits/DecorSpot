@@ -244,7 +244,7 @@ let currentData = { ...DEFAULT_DATA };
 let selectedFiles = [];
 let currentCategoryFilter = 'all';
 
-const SCHEMA_VERSION = '2.1';
+const SCHEMA_VERSION = '2.2';
 
 function loadData() {
   try {
@@ -264,6 +264,13 @@ function loadData() {
         packages: hasAllPackages ? parsed.packages : DEFAULT_DATA.packages,
         faqs: (parsed.faqs && parsed.faqs.length >= 6) ? parsed.faqs : DEFAULT_DATA.faqs
       };
+
+      if (!currentData.studio.heroTagline || currentData.studio.heroTagline.includes("Gentle beginnings")) {
+        currentData.studio.heroTagline = DEFAULT_DATA.studio.heroTagline;
+        currentData.studio.heroEyebrow = DEFAULT_DATA.studio.heroEyebrow;
+        currentData.studio.heroDesc = DEFAULT_DATA.studio.heroDesc;
+        currentData.studio.subtitle = DEFAULT_DATA.studio.subtitle;
+      }
 
       if (!hasAllServices || !hasAllPackages || !hasAllPhotos || version !== SCHEMA_VERSION) {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(currentData));

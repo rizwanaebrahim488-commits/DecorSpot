@@ -241,7 +241,7 @@ const DEFAULT_DATA = {
 
 let currentPackageFilter = 'all';
 
-const SCHEMA_VERSION = '2.1';
+const SCHEMA_VERSION = '2.2';
 
 function loadConfigFromStorage() {
   try {
@@ -264,6 +264,13 @@ function loadConfigFromStorage() {
           packages: hasAllPackages ? parsed.packages : DEFAULT_DATA.packages,
           faqs: (parsed.faqs && parsed.faqs.length >= 6) ? parsed.faqs : DEFAULT_DATA.faqs
         };
+        // Ensure new multi-photoshoot copy is used if old baby-only copy was stored
+        if (!parsed.studio.heroTagline || parsed.studio.heroTagline.includes("Gentle beginnings")) {
+          parsed.studio.heroTagline = DEFAULT_DATA.studio.heroTagline;
+          parsed.studio.heroEyebrow = DEFAULT_DATA.studio.heroEyebrow;
+          parsed.studio.heroDesc = DEFAULT_DATA.studio.heroDesc;
+          parsed.studio.subtitle = DEFAULT_DATA.studio.subtitle;
+        }
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
           localStorage.setItem('decorspot_schema_version', SCHEMA_VERSION);
