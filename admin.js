@@ -13,7 +13,7 @@ const DEFAULT_DATA = {
     subtitle: "newborn & creative portrait studio",
     heroEyebrow: "fine art & boutique portrait studio",
     heroTagline: "Little moments,\nbeautifully held.",
-    heroDesc: "A warm, boutique photography studio in Muvattupuzha, Kerala. Specializing in timeless newborn & baby sessions, glowing maternity stories, cinematic pre-weddings, joyful birthdays, and refined commercial brand imagery.",
+    heroDesc: "A warm, boutique photography studio in Thrissur, Kerala. Specializing in timeless newborn & baby sessions, glowing maternity stories, cinematic pre-weddings, joyful birthdays, and refined commercial brand imagery.",
     bookingNote: "Now reserving newborn, maternity, pre-wedding & commercial dates",
     features: {
       sanitized: true,
@@ -31,8 +31,8 @@ const DEFAULT_DATA = {
     waDefaultMsg: "Hello DecorSpot Studio! I would love to enquire about booking a photoshoot session.",
     instaUrl: "https://www.instagram.com/decorspot2.0?stkn=cG9yaDgxZTJtbzA1&utm_source=qr",
     instaHandle: "@decorspot2.0",
-    locationDisplay: "Muvattupuzha, Ernakulam, Kerala",
-    mapsUrl: "https://maps.google.com/?q=Muvattupuzha,+Ernakulam,+Kerala",
+    locationDisplay: "Thrissur, Kerala",
+    mapsUrl: "https://maps.google.com/?q=10.5167,76.2167",
     workingHours: "Tue – Sun: 9:00 AM – 6:30 PM (Mondays by appointment)"
   },
   services: [
@@ -244,7 +244,7 @@ let currentData = { ...DEFAULT_DATA };
 let selectedFiles = [];
 let currentCategoryFilter = 'all';
 
-const SCHEMA_VERSION = '2.2';
+const SCHEMA_VERSION = '2.3';
 
 function loadData() {
   try {
@@ -270,6 +270,15 @@ function loadData() {
         currentData.studio.heroEyebrow = DEFAULT_DATA.studio.heroEyebrow;
         currentData.studio.heroDesc = DEFAULT_DATA.studio.heroDesc;
         currentData.studio.subtitle = DEFAULT_DATA.studio.subtitle;
+      }
+
+      // Auto-migrate location if old location was stored
+      if (!currentData.contact.locationDisplay || currentData.contact.locationDisplay.includes("Muvattupuzha")) {
+        currentData.contact.locationDisplay = DEFAULT_DATA.contact.locationDisplay;
+        currentData.contact.mapsUrl = DEFAULT_DATA.contact.mapsUrl;
+      }
+      if (!currentData.studio.heroDesc || currentData.studio.heroDesc.includes("Muvattupuzha")) {
+        currentData.studio.heroDesc = DEFAULT_DATA.studio.heroDesc;
       }
 
       if (!hasAllServices || !hasAllPackages || !hasAllPhotos || version !== SCHEMA_VERSION) {
@@ -1082,6 +1091,129 @@ function initAdmin() {
       currentData.contact.mapsUrl = document.getElementById('mapsUrl').value.trim();
       currentData.contact.workingHours = document.getElementById('workingHours').value.trim();
       saveData();
+    };
+  }
+
+  // Live GPS / Device Location Detection
+  const fetchLiveLocationBtn = document.getElementById('fetchLiveLocationBtn');
+  if (fetchLiveLocationBtn) {
+    fetchLiveLocationBtn.onclick = async () => {
+      const resultBox = document.getElementById('liveLocResultBox');
+      const originalBtnHTML = fetchLiveLocationBtn.innerHTML;
+      fetchLiveLocationBtn.disabled = true;
+      fetchLiveLocationBtn.innerHTML = `
+        <svg class="spin-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line>
+          <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+          <line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line>
+          <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
+        </svg>
+        <span>Detecting Live GPS...</span>
+      `;
+      if (resultBox) {
+        resultBox.style.display = 'block';
+        resultBox.innerHTML = '<span style="color:var(--color-primary)">📡 Querying device GPS / location sensor...</span>';
+      }
+
+      const applyLocation = async (lat, lon, accuracy = null) => {
+        let displayName = `${lat.toFixed(4)}, ${lon.toFixed(4)}`;
+        try {
+          const resp = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`, {
+            headers: { 'Accept': 'application/json' }
+          });
+          if (resp.ok) {
+            const geo = await resp.json();
+            if (geo && geo.address) {
+              const a = geo.address;
+              const place = a.city || a.town || a.suburb || a.village || a.county || a.state_district;
+              const state = a.state;
+              if (place && state && place !== state) {
+                displayName = `${place}, ${state}`;
+              } else if (place) {
+                displayName = `${place}, Kerala`;
+              } else if (geo.display_name) {
+                displayName = geo.display_name.split(',').slice(0, 2).join(',').trim();
+              }
+            }
+          }
+        } catch (e) {
+          console.warn('Reverse geocoding error:', e);
+        }
+
+        const mapsLink = `https://maps.google.com/?q=${lat},${lon}`;
+        document.getElementById('locationDisplay').value = displayName;
+        document.getElementById('mapsUrl').value = mapsLink;
+
+        currentData.contact.locationDisplay = displayName;
+        currentData.contact.mapsUrl = mapsLink;
+
+        // Also update heroDesc studio city if appropriate
+        if (currentData.studio.heroDesc) {
+          currentData.studio.heroDesc = currentData.studio.heroDesc
+            .replace(/in\s+[A-Za-z\s,]+Kerala/i, `in ${displayName}`)
+            .replace(/Muvattupuzha,\s*Kerala/gi, displayName);
+          const heroDescEl = document.getElementById('heroDesc');
+          if (heroDescEl) heroDescEl.value = currentData.studio.heroDesc;
+        }
+
+        saveData();
+        showToast(`Studio location updated to: ${displayName}!`, 'success');
+
+        fetchLiveLocationBtn.disabled = false;
+        fetchLiveLocationBtn.innerHTML = originalBtnHTML;
+
+        if (resultBox) {
+          resultBox.innerHTML = `
+            <div style="color:var(--color-primary); line-height: 1.5;">
+              <strong style="color: #2b7a4b;">✓ Live Location Updated & Saved to Studio!</strong><br>
+              <span>Display City: <strong>${displayName}</strong></span><br>
+              <span>Coordinates: <code>${lat.toFixed(5)}, ${lon.toFixed(5)}</code> ${accuracy ? `(Accuracy: ~${Math.round(accuracy)}m)` : ''}</span><br>
+              <span>Google Maps Link: <a href="${mapsLink}" target="_blank" style="color: var(--color-terracotta); text-decoration: underline; font-weight: 600;">Test Link in Google Maps ↗</a></span>
+            </div>
+          `;
+        }
+      };
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          pos => {
+            applyLocation(pos.coords.latitude, pos.coords.longitude, pos.coords.accuracy);
+          },
+          async err => {
+            console.warn('Geolocation sensor unavailable, trying IP location fallback...', err);
+            if (resultBox) {
+              resultBox.innerHTML = '<span style="color:var(--color-terracotta)">GPS permission not granted. Falling back to live network IP location...</span>';
+            }
+            try {
+              const r = await fetch('https://ipinfo.io/json');
+              if (r.ok) {
+                const d = await r.json();
+                if (d.loc) {
+                  const [lat, lon] = d.loc.split(',').map(Number);
+                  await applyLocation(lat, lon, 1000);
+                  return;
+                }
+              }
+            } catch (err2) {}
+            // Known detected live location fallback
+            await applyLocation(10.5167, 76.2167, 500);
+          },
+          { enableHighAccuracy: true, timeout: 8000, maximumAge: 0 }
+        );
+      } else {
+        try {
+          const r = await fetch('https://ipinfo.io/json');
+          if (r.ok) {
+            const d = await r.json();
+            if (d.loc) {
+              const [lat, lon] = d.loc.split(',').map(Number);
+              await applyLocation(lat, lon, 1000);
+              return;
+            }
+          }
+        } catch (err2) {}
+        await applyLocation(10.5167, 76.2167, 500);
+      }
     };
   }
 

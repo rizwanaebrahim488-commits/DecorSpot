@@ -1,6 +1,6 @@
 # DecorSpot 2.0 — Comprehensive Portrait & Commercial Photography Studio
 
-A luxury, boutique photography studio website and built-in Admin CMS for **DecorSpot 2.0** in Muvattupuzha, Ernakulam, Kerala.
+A luxury, boutique photography studio website and built-in Admin CMS for **DecorSpot 2.0** in Thrissur, Kerala.
 
 Specializing in **all types of photoshoots**:
 - 👶 **Newborn & Baby Portraits** (Signature hospital-grade sanitized 28°C suite, 100% baby-led pacing)
@@ -35,7 +35,7 @@ Specializing in **all types of photoshoots**:
    - WhatsApp Number: **`+91 88912 36399`** (`wa.me/918891236399`)
    - Interactive Enquiry Form saves leads into the **Admin Panel Inbox** (`localStorage`) and offers 1-click personalized WhatsApp chat launch.
    - Instagram: **`@decorspot2.0`** with 1-click clipboard copy.
-   - Google Maps Location: [Muvattupuzha, Ernakulam, Kerala](https://maps.google.com/?q=Muvattupuzha,+Ernakulam,+Kerala).
+   - Google Maps Location: [Thrissur, Kerala (10.5167, 76.2167)](https://maps.google.com/?q=10.5167,76.2167).
 
 ---
 

@@ -12,7 +12,7 @@ const DEFAULT_DATA = {
     subtitle: "newborn & creative portrait studio",
     heroEyebrow: "fine art & boutique portrait studio",
     heroTagline: "Little moments,\nbeautifully held.",
-    heroDesc: "A warm, boutique photography studio in Muvattupuzha, Kerala. Specializing in timeless newborn & baby sessions, glowing maternity stories, cinematic pre-weddings, joyful birthdays, and refined commercial brand imagery.",
+    heroDesc: "A warm, boutique photography studio in Thrissur, Kerala. Specializing in timeless newborn & baby sessions, glowing maternity stories, cinematic pre-weddings, joyful birthdays, and refined commercial brand imagery.",
     bookingNote: "Now reserving newborn, maternity, pre-wedding & commercial dates",
     features: {
       sanitized: true,
@@ -30,8 +30,8 @@ const DEFAULT_DATA = {
     waDefaultMsg: "Hello DecorSpot Studio! I would love to enquire about booking a photoshoot session.",
     instaUrl: "https://www.instagram.com/decorspot2.0?stkn=cG9yaDgxZTJtbzA1&utm_source=qr",
     instaHandle: "@decorspot2.0",
-    locationDisplay: "Muvattupuzha, Ernakulam, Kerala",
-    mapsUrl: "https://maps.google.com/?q=Muvattupuzha,+Ernakulam,+Kerala",
+    locationDisplay: "Thrissur, Kerala",
+    mapsUrl: "https://maps.google.com/?q=10.5167,76.2167",
     workingHours: "Tue – Sun: 9:00 AM – 6:30 PM (Mondays by appointment)"
   },
   services: [
@@ -241,7 +241,7 @@ const DEFAULT_DATA = {
 
 let currentPackageFilter = 'all';
 
-const SCHEMA_VERSION = '2.2';
+const SCHEMA_VERSION = '2.3';
 
 function loadConfigFromStorage() {
   try {
@@ -270,6 +270,14 @@ function loadConfigFromStorage() {
           parsed.studio.heroEyebrow = DEFAULT_DATA.studio.heroEyebrow;
           parsed.studio.heroDesc = DEFAULT_DATA.studio.heroDesc;
           parsed.studio.subtitle = DEFAULT_DATA.studio.subtitle;
+        }
+        // Auto-migrate location if old location was stored
+        if (!parsed.contact.locationDisplay || parsed.contact.locationDisplay.includes("Muvattupuzha")) {
+          parsed.contact.locationDisplay = DEFAULT_DATA.contact.locationDisplay;
+          parsed.contact.mapsUrl = DEFAULT_DATA.contact.mapsUrl;
+        }
+        if (!parsed.studio.heroDesc || parsed.studio.heroDesc.includes("Muvattupuzha")) {
+          parsed.studio.heroDesc = DEFAULT_DATA.studio.heroDesc;
         }
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
@@ -841,11 +849,11 @@ function applyConfigToDOM() {
     if (el.textContent.includes('@')) el.textContent = config.instagramTag;
   });
 
-  document.querySelectorAll('.footer-location-link span, .social-location-link span').forEach(el => {
+  document.querySelectorAll('.footer-location-link span, .social-location-link span, .enquire-maps-text').forEach(el => {
     el.textContent = config.city + ' ↗';
   });
 
-  document.querySelectorAll('a[href*="maps.google.com"]').forEach(link => {
+  document.querySelectorAll('a[href*="maps.google.com"], a.footer-location-link, a.social-location-link, #enquireMapsBtn, .footer-maps-bottom-link').forEach(link => {
     link.href = config.googleMapsUrl;
   });
 

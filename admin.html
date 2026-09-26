@@ -635,7 +635,7 @@
           </div>
           <div class="form-group full-width" style="margin-bottom:20px;">
             <label class="admin-label">Hero Body Description</label>
-            <textarea class="admin-textarea" id="heroDesc" rows="3" placeholder="A warm, boutique photography studio in Muvattupuzha, Kerala..."></textarea>
+            <textarea class="admin-textarea" id="heroDesc" rows="3" placeholder="A warm, boutique photography studio in Thrissur, Kerala..."></textarea>
           </div>
           <button class="admin-btn" id="saveStudioBtn">Save Studio Branding</button>
         </div>
@@ -676,7 +676,36 @@
         </div>
 
         <div class="admin-card">
-          <h2 class="admin-card-title">Instagram & Location</h2>
+          <div class="admin-card-title">
+            <span>Instagram & Studio Location</span>
+          </div>
+
+          <!-- Live Location Detection Box -->
+          <div style="background: rgba(42, 75, 59, 0.05); border: 1px solid rgba(42, 75, 59, 0.15); border-radius: 12px; padding: 16px; margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+              <div>
+                <strong style="color: var(--color-primary); font-size: 0.95rem; display: flex; align-items: center; gap: 6px;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                  </svg>
+                  Live GPS / Device Studio Location
+                </strong>
+                <p id="liveLocNote" style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 4px; margin-bottom: 0;">
+                  Click to auto-detect current device location (phone/PC) and sync coordinates with Google Maps.
+                </p>
+              </div>
+              <button type="button" class="admin-btn terracotta" id="fetchLiveLocationBtn" style="white-space: nowrap; display: inline-flex; align-items: center; gap: 8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>📍 Fetch &amp; Use Live Location</span>
+              </button>
+            </div>
+            <div id="liveLocResultBox" style="display: none; margin-top: 12px; padding: 10px 14px; background: #fff; border-radius: 8px; font-size: 0.86rem; border-left: 3px solid var(--color-terracotta);"></div>
+          </div>
+
           <div class="form-row">
             <div class="form-group">
               <label class="admin-label">Instagram Handle</label>
@@ -690,18 +719,18 @@
           <div class="form-row">
             <div class="form-group">
               <label class="admin-label">Location / City Display</label>
-              <input type="text" class="admin-input" id="locationDisplay" placeholder="Muvattupuzha, Ernakulam, Kerala" />
+              <input type="text" class="admin-input" id="locationDisplay" placeholder="Thrissur, Kerala" />
             </div>
             <div class="form-group">
               <label class="admin-label">Google Maps URL</label>
-              <input type="url" class="admin-input" id="mapsUrl" placeholder="https://maps.google.com/?q=..." />
+              <input type="url" class="admin-input" id="mapsUrl" placeholder="https://maps.google.com/?q=10.5167,76.2167" />
             </div>
           </div>
           <div class="form-group full-width">
             <label class="admin-label">Studio Working Hours</label>
             <input type="text" class="admin-input" id="workingHours" placeholder="Tue – Sun: 9:00 AM – 6:30 PM (Mondays by appointment)" />
           </div>
-          <button class="admin-btn" id="saveContactBtn" style="margin-top:12px;">Save Contact & Social Details</button>
+          <button class="admin-btn" id="saveContactBtn" style="margin-top:12px;">Save Contact &amp; Social Details</button>
         </div>
       </section>
 
