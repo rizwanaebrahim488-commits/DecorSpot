@@ -13,7 +13,7 @@ const DEFAULT_DATA = {
     subtitle: "newborn & creative portrait studio",
     heroEyebrow: "fine art & boutique portrait studio",
     heroTagline: "Little moments,\nbeautifully held.",
-    heroDesc: "A warm, boutique photography studio located opposite HM College, Randar, Muvattupuzha, Kerala. Specializing in timeless newborn & baby sessions, glowing maternity stories, cinematic pre-weddings, joyful birthdays, and refined commercial brand imagery.",
+    heroDesc: "A warm, boutique photography studio located opposite HM College, Randar, Muvattupuzha. Specializing in timeless newborn & baby sessions, glowing maternity stories, cinematic pre-weddings, joyful birthdays, and refined commercial brand imagery.",
     bookingNote: "Now reserving newborn, maternity, pre-wedding & commercial dates",
     features: {
       sanitized: true,
@@ -31,7 +31,7 @@ const DEFAULT_DATA = {
     waDefaultMsg: "Hello DecorSpot Studio! I would love to enquire about booking a photoshoot session.",
     instaUrl: "https://www.instagram.com/decorspot2.0?stkn=cG9yaDgxZTJtbzA1&utm_source=qr",
     instaHandle: "@decorspot2.0",
-    locationDisplay: "Opposite HM College, Randar, Muvattupuzha, Kerala - 686673",
+    locationDisplay: "Opp. HM College, Randar, Muvattupuzha – 686673",
     mapsUrl: "https://maps.google.com/?q=Opposite+HM+College,+Randar,+Muvattupuzha,+Kerala+686673",
     workingHours: "Tue – Sun: 9:00 AM – 6:30 PM (Mondays by appointment)"
   },
@@ -273,11 +273,11 @@ function loadData() {
       }
 
       // Auto-migrate location if old location was stored
-      if (!currentData.contact.locationDisplay || !currentData.contact.locationDisplay.includes("HM College")) {
+      if (!currentData.contact.locationDisplay || currentData.contact.locationDisplay.includes("Thrissur") || currentData.contact.locationDisplay === "Muvattupuzha, Ernakulam, Kerala") {
         currentData.contact.locationDisplay = DEFAULT_DATA.contact.locationDisplay;
         currentData.contact.mapsUrl = DEFAULT_DATA.contact.mapsUrl;
       }
-      if (!currentData.studio.heroDesc || !currentData.studio.heroDesc.includes("HM College")) {
+      if (!currentData.studio.heroDesc || currentData.studio.heroDesc.includes("Thrissur") || currentData.studio.heroDesc.includes("in Muvattupuzha, Kerala")) {
         currentData.studio.heroDesc = DEFAULT_DATA.studio.heroDesc;
       }
 
@@ -1195,8 +1195,8 @@ function initAdmin() {
                 }
               }
             } catch (err2) {}
-            // Known detected live location fallback
-            await applyLocation(10.5167, 76.2167, 500);
+            // Known studio location fallback (Opposite HM College, Randar, Muvattupuzha)
+            await applyLocation(9.9823, 76.6043, 50);
           },
           { enableHighAccuracy: true, timeout: 8000, maximumAge: 0 }
         );
@@ -1212,7 +1212,7 @@ function initAdmin() {
             }
           }
         } catch (err2) {}
-        await applyLocation(10.5167, 76.2167, 500);
+        await applyLocation(9.9823, 76.6043, 50);
       }
     };
   }

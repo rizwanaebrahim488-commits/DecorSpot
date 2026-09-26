@@ -12,7 +12,7 @@ const DEFAULT_DATA = {
     subtitle: "newborn & creative portrait studio",
     heroEyebrow: "fine art & boutique portrait studio",
     heroTagline: "Little moments,\nbeautifully held.",
-    heroDesc: "A warm, boutique photography studio located opposite HM College, Randar, Muvattupuzha, Kerala. Specializing in timeless newborn & baby sessions, glowing maternity stories, cinematic pre-weddings, joyful birthdays, and refined commercial brand imagery.",
+    heroDesc: "A warm, boutique photography studio located opposite HM College, Randar, Muvattupuzha. Specializing in timeless newborn & baby sessions, glowing maternity stories, cinematic pre-weddings, joyful birthdays, and refined commercial brand imagery.",
     bookingNote: "Now reserving newborn, maternity, pre-wedding & commercial dates",
     features: {
       sanitized: true,
@@ -30,7 +30,7 @@ const DEFAULT_DATA = {
     waDefaultMsg: "Hello DecorSpot Studio! I would love to enquire about booking a photoshoot session.",
     instaUrl: "https://www.instagram.com/decorspot2.0?stkn=cG9yaDgxZTJtbzA1&utm_source=qr",
     instaHandle: "@decorspot2.0",
-    locationDisplay: "Opposite HM College, Randar, Muvattupuzha, Kerala - 686673",
+    locationDisplay: "Opp. HM College, Randar, Muvattupuzha – 686673",
     mapsUrl: "https://maps.google.com/?q=Opposite+HM+College,+Randar,+Muvattupuzha,+Kerala+686673",
     workingHours: "Tue – Sun: 9:00 AM – 6:30 PM (Mondays by appointment)"
   },
@@ -272,11 +272,11 @@ function loadConfigFromStorage() {
           parsed.studio.subtitle = DEFAULT_DATA.studio.subtitle;
         }
         // Auto-migrate location if old location was stored
-        if (!parsed.contact.locationDisplay || !parsed.contact.locationDisplay.includes("HM College")) {
+        if (!parsed.contact.locationDisplay || parsed.contact.locationDisplay.includes("Thrissur") || parsed.contact.locationDisplay === "Muvattupuzha, Ernakulam, Kerala") {
           parsed.contact.locationDisplay = DEFAULT_DATA.contact.locationDisplay;
           parsed.contact.mapsUrl = DEFAULT_DATA.contact.mapsUrl;
         }
-        if (!parsed.studio.heroDesc || !parsed.studio.heroDesc.includes("HM College")) {
+        if (!parsed.studio.heroDesc || parsed.studio.heroDesc.includes("Thrissur") || parsed.studio.heroDesc.includes("in Muvattupuzha, Kerala")) {
           parsed.studio.heroDesc = DEFAULT_DATA.studio.heroDesc;
         }
         try {

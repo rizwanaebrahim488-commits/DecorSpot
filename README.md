@@ -1,6 +1,6 @@
 # DecorSpot 2.0 — Comprehensive Portrait & Commercial Photography Studio
 
-A luxury, boutique photography studio website and built-in Admin CMS for **DecorSpot 2.0** located opposite HM College, Randar, Muvattupuzha, Kerala - 686673.
+A luxury, boutique photography studio website and built-in Admin CMS for **DecorSpot 2.0** located Opposite HM College, Randar, Muvattupuzha P.O., Kerala – 686673.
 
 Specializing in **all types of photoshoots**:
 - 👶 **Newborn & Baby Portraits** (Signature hospital-grade sanitized 28°C suite, 100% baby-led pacing)
@@ -35,7 +35,7 @@ Specializing in **all types of photoshoots**:
    - WhatsApp Number: **`+91 88912 36399`** (`wa.me/918891236399`)
    - Interactive Enquiry Form saves leads into the **Admin Panel Inbox** (`localStorage`) and offers 1-click personalized WhatsApp chat launch.
    - Instagram: **`@decorspot2.0`** with 1-click clipboard copy.
-   - Google Maps Location: [Opposite HM College, Randar, Muvattupuzha, Kerala - 686673](https://maps.google.com/?q=Opposite+HM+College,+Randar,+Muvattupuzha,+Kerala+686673).
+   - Google Maps Location: [Opposite HM College, Randar, Muvattupuzha – 686673](https://maps.google.com/?q=Opposite+HM+College,+Randar,+Muvattupuzha,+Kerala+686673).
 
 ---
 
