@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>DecorSpot 2.0 — Editorial Magazine Issue 01</title>
+  <meta name="description" content="DecorSpot 2.0 Studio Editorial Magazine — Featuring Baby Portraits, Maternity & Motherhood, Pre-Birthday Celebrations, and Commercial Photography." />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --color-sage: #d8e1d6;
+      --color-linen: #f5ecdf;
+      --color-biscuit: #e9d7c7;
+      --color-terracotta: #c6856d;
+      --color-ochre: #eecf79;
+      --color-evergreen: #253f35;
+      --color-dark: #192922;
+      --color-offwhite: #fcf9f5;
+      
+      --font-serif: 'Fraunces', Georgia, serif;
+      --font-sans: 'DM Sans', system-ui, sans-serif;
+      --font-mono: 'Space Mono', monospace;
+
+      --shadow-mag: 0 20px 40px rgba(0, 0, 0, 0.18), 0 5px 15px rgba(0,0,0,0.08);
+      --shadow-page: 0 10px 30px rgba(37, 63, 53, 0.08);
+      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--color-evergreen);
+      color: var(--color-dark);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* TOP HEADER BAR */
+    .mag-header {
+      background: rgba(25, 41, 34, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(216, 225, 214, 0.15);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      color: var(--color-linen);
+    }
+
+    .mag-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--color-linen);
+    }
+
+    .mag-brand-img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--color-ochre);
+    }
+
+    .mag-brand-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .mag-brand-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      background: rgba(198, 133, 109, 0.25);
+      color: var(--color-ochre);
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .mag-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .mag-btn {
+      background: rgba(245, 236, 223, 0.1);
+      border: 1px solid rgba(245, 236, 223, 0.2);
+      color: var(--color-linen);
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-family: var(--font-sans);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: var(--transition-smooth);
+    }
+
+    .mag-btn:hover {
+      background: var(--color-terracotta);
+      border-color: var(--color-terracotta);
+      color: #fff;
+    }
+
+    .mag-btn.active {
+      background: var(--color-ochre);
+      color: var(--color-evergreen);
+      font-weight: 600;
+      border-color: var(--color-ochre);
+    }
+
+    /* MAIN CONTAINER */
+    .mag-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      perspective: 2000px;
+    }
+
+    /* MAGAZINE BOOK CONTAINER */
+    .magazine-book {
+      width: 100%;
+      max-width: 1280px;
+      min-height: 800px;
+      background: var(--color-offwhite);
+      border-radius: 12px;
+      box-shadow: var(--shadow-mag);
+      display: flex;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* SPREAD VIEW & SINGLE VIEW */
+    .spread-container {
+      width: 100%;
+      display: flex;
+      min-height: 800px;
+    }
+
+    .page {
+      flex: 1;
+      min-width: 50%;
+      background: var(--color-offwhite);
+      padding: 3rem 2.5rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid rgba(37, 63, 53, 0.08);
+      overflow-y: auto;
+    }
+
+    .page-left {
+      background-image: linear-gradient(to right, rgba(0,0,0,0.03) 0%, transparent 8%, transparent 100%);
+    }
+
+    .page-right {
+      background-image: linear-gradient(to left, rgba(0,0,0,0.03) 0%, transparent 8%, transparent 100%);
+    }
+
+    /* SINGLE PAGE CONTINUOUS MODE (MOBILE/TOGGLE) */
+    .magazine-book.single-page-mode .spread-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    .magazine-book.single-page-mode .page {
+      min-width: 100%;
+      width: 100%;
+      border-right: none;
+      border-bottom: 1px solid rgba(37, 63, 53, 0.1);
+      padding: 2.5rem 1.5rem;
+    }
+
+    /* PAGE HEADER / FOOTER METADATA */
+    .page-meta-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: rgba(25, 41, 34, 0.5);
+      border-bottom: 1px dashed rgba(37, 63, 53, 0.15);
+      padding-bottom: 0.6rem;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .page-meta-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: rgba(25, 41, 34, 0.5);
+      border-top: 1px dashed rgba(37, 63, 53, 0.15);
+      padding-top: 0.6rem;
+      margin-top: 2rem;
+    }
+
+    .page-num {
+      font-weight: 700;
+      color: var(--color-terracotta);
+    }
+
+    /* COVER PAGE STYLING */
+    .page-cover {
+      background: #17241e;
+      color: var(--color-linen);
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .cover-hero-img-wrap {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .cover-hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.72) contrast(1.05);
+      transition: transform 10s ease;
+    }
+
+    .page-cover:hover .cover-hero-img {
+      transform: scale(1.04);
+    }
+
+    .cover-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(23,36,30,0.85) 0%, rgba(23,36,30,0.3) 40%, rgba(23,36,30,0.92) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 3rem;
+      z-index: 2;
+    }
+
+    .cover-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid rgba(245, 236, 223, 0.25);
+      padding-bottom: 1rem;
+    }
+
+    .cover-masthead {
+      font-family: var(--font-serif);
+      font-size: 3.5rem;
+      font-weight: 300;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--color-linen);
+      text-transform: uppercase;
+    }
+
+    .cover-masthead span {
+      display: block;
+      font-weight: 700;
+      color: var(--color-ochre);
+      font-size: 1.1rem;
+      font-family: var(--font-mono);
+      letter-spacing: 0.3em;
+      margin-top: 0.4rem;
+    }
+
+    .cover-issue-badge {
+      text-align: right;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-sage);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .cover-content {
+      margin-top: auto;
+    }
+
+    .cover-tagline {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--color-ochre);
+      margin-bottom: 0.75rem;
+    }
+
+    .cover-main-headline {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 400;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 1.25rem;
+    }
+
+    .cover-teaser-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      border-top: 1px solid rgba(245, 236, 223, 0.2);
+      padding-top: 1.25rem;
+    }
+
+    .cover-teaser-item {
+      font-size: 0.82rem;
+      color: var(--color-linen);
+    }
+
+    .cover-teaser-item strong {
+      display: block;
+      color: var(--color-ochre);
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    /* TYPOGRAPHY & LAYOUT ELEMENTS */
+    .mag-section-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--color-terracotta);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .mag-h1 {
+      font-family: var(--font-serif);
+      font-size: 2.4rem;
+      font-weight: 500;
+      line-height: 1.15;
+      color: var(--color-evergreen);
+      margin-bottom: 1rem;
+    }
+
+    .mag-h2 {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--color-evergreen);
+      margin-bottom: 0.75rem;
+    }
+
+    .mag-lead {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--color-dark);
+      font-weight: 400;
+      margin-bottom: 1.25rem;
+    }
+
+    .mag-body-text {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: rgba(25, 41, 34, 0.85);
+      margin-bottom: 1rem;
+    }
+
+    .dropcap::first-letter {
+      font-family: var(--font-serif);
+      font-size: 3.8rem;
+      float: left;
+      line-height: 0.8;
+      padding-right: 0.5rem;
+      padding-top: 0.2rem;
+      color: var(--color-terracotta);
+      font-weight: 700;
+    }
+
+    .quote-box {
+      background: var(--color-linen);
+      border-left: 4px solid var(--color-terracotta);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 12px 12px 0;
+      margin: 1.5rem 0;
+    }
+
+    .quote-box p {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--color-evergreen);
+      line-height: 1.4;
+    }
+
+    .quote-author {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-terracotta);
+      margin-top: 0.5rem;
+      display: block;
+    }
+
+    /* IMAGE GALLERIES & CARDS IN MAGAZINE */
+    .mag-img-frame {
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow-page);
+      cursor: pointer;
+      background: var(--color-biscuit);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .mag-img-frame:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(37,63,53,0.18);
+    }
+
+    .mag-img-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .mag-img-frame:hover img {
+      transform: scale(1.03);
+    }
+
+    .img-caption {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      color: rgba(25, 41, 34, 0.7);
+      margin-top: 0.4rem;
+      font-style: italic;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+
+    .featured-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: var(--color-sage);
+      color: var(--color-evergreen);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ACTION CTA BUTTON IN MAGAZINE */
+    .mag-cta-box {
+      background: var(--color-evergreen);
+      color: var(--color-linen);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+
+    .mag-cta-box h4 {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      color: var(--color-ochre);
+      margin-bottom: 0.4rem;
+    }
+
+    .mag-cta-box p {
+      font-size: 0.85rem;
+      color: var(--color-sage);
+      margin-bottom: 1rem;
+    }
+
+    .btn-wa-mag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #25d366;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: 30px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-wa-mag:hover {
+      transform: scale(1.04);
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
+    }
+
+    /* FOOTER NAVIGATION & PAGINATION SCRUBBER */
+    .mag-footer-bar {
+      background: rgba(25, 41, 34, 0.98);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(216, 225, 214, 0.15);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--color-linen);
+    }
+
+    .nav-arrow-btn {
+      background: var(--color-terracotta);
+      border: none;
+      color: #fff;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: var(--transition-smooth);
+    }
+
+    .nav-arrow-btn:hover {
+      background: var(--color-ochre);
+      color: var(--color-evergreen);
+      transform: scale(1.08);
+    }
+
+    .nav-arrow-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .scrubber-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      overflow-x: auto;
+      max-width: 600px;
+      padding: 0.4rem;
+    }
+
+    .scrub-thumb {
+      width: 44px;
+      height: 56px;
+      border-radius: 4px;
+      border: 2px solid transparent;
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .scrub-thumb:hover, .scrub-thumb.active {
+      opacity: 1;
+      border-color: var(--color-ochre);
+      transform: translateY(-2px);
+    }
+
+    .page-indicator {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--color-ochre);
+    }
+
+    /* LIGHTBOX MODAL */
+    .mag-lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 26, 21, 0.95);
+      backdrop-filter: blur(15px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .mag-lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      max-width: 90vw;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .lightbox-caption {
+      margin-top: 1rem;
+      color: var(--color-linen);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: #fff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-close:hover {
+      background: var(--color-terracotta);
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 992px) {
+      .magazine-book {
+        flex-direction: column;
+        min-height: auto;
+      }
+      .spread-container {
+        flex-direction: column;
+        min-height: auto;
+      }
+      .page {
+        min-width: 100%;
+        padding: 2rem 1.25rem;
+      }
+      .cover-masthead {
+        font-size: 2.5rem;
+      }
+      .cover-main-headline {
+        font-size: 2rem;
+      }
+      .cover-teaser-list {
+        grid-template-columns: 1fr;
+      }
+      .scrubber-wrap {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       MAGAZINE HEADER CONTROL BAR
+       ======================================================================== -->
+  <header class="mag-header">
+    <a href="index.html" class="mag-brand">
+      <img src="logo.jpg" alt="DecorSpot Logo" class="mag-brand-img" />
+      <span class="mag-brand-title">DecorSpot Studio Journal</span>
+      <span class="mag-brand-tag">Issue 01 • 2026</span>
+    </a>
+
+    <div class="mag-controls">
+      <button class="mag-btn" id="btnToggleView" title="Toggle Spread / Single Page View">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <line x1="12" y1="3" x2="12" y2="21" />
+        </svg>
+        <span id="viewModeLabel">2-Page Spread</span>
+      </button>
+
+      <button class="mag-btn" id="btnSound" title="Toggle Flip Audio">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+        </svg>
+        <span>Sound</span>
+      </button>
+
+      <button class="mag-btn" id="btnFullscreen" title="Toggle Fullscreen">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+        </svg>
+        <span>Fullscreen</span>
+      </button>
+
+      <a href="DecorSpot_Magazine_Issue_01.pdf" download="DecorSpot_Magazine_Issue_01.pdf" class="mag-btn" style="background: var(--color-ochre); color: var(--color-evergreen); border-color: var(--color-ochre); font-weight: 600;" title="Download Magazine as PDF">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+        <span>Download PDF 📄</span>
+      </a>
+
+      <a href="index.html" class="mag-btn" style="background: var(--color-terracotta); border-color: var(--color-terracotta);">
+        <span>Return to Main Site ↗</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       MAGAZINE STAGE & BOOK CONTAINER
+       ======================================================================== -->
+  <main class="mag-stage">
+    <div class="magazine-book" id="magazineBook">
+      
+      <!-- SPREAD CONTAINER (PAGES SLIDE DYNAMICALLY VIA JS) -->
+      <div class="spread-container" id="spreadViewport">
+
+        <!-- ====================================================================
+             SPREAD 1: COVER PAGE (PAGE 1) & INSIDE COVER / EDITORIAL NOTE (PAGE 2)
+             ==================================================================== -->
+        <div class="page-spread-wrapper" data-spread="1" style="display: flex; width: 100%;">
+          
+          <!-- PAGE 1: FRONT COVER -->
+          <div class="page page-cover page-left">
+            <div class="cover-hero-img-wrap">
+              <img src="photos_drive/1K5A0005.JPG" alt="DecorSpot Signature Portrait" class="cover-hero-img" />
+            </div>
+            <div class="cover-overlay">
+              <div class="cover-header">
+                <div class="cover-masthead">
+                  DECORSPOT
+                  <span>EDITORIAL JOURNAL</span>
+                </div>
+                <div class="cover-issue-badge">
+                  VOL. I • NO. 1<br />
+                  AUTUMN EDITION
+                </div>
+              </div>
+
+              <div class="cover-content">
+                <div class="cover-tagline">PORTRAIT & COMMERCIAL LUXURY SHOWCASE</div>
+                <h1 class="cover-main-headline">Capturing Life’s Golden Moments</h1>
+
+                <div class="cover-teaser-list">
+                  <div class="cover-teaser-item">
+                    <strong>PURE WONDER</strong>
+                    Baby & Newborn Signature Shoot (Sanitized Suite)
+                  </div>
+                  <div class="cover-teaser-item">
+                    <strong>GLOWING STORIES</strong>
+                    Maternity & Motherhood Portraits
+                  </div>
+                  <div class="cover-teaser-item">
+                    <strong>JOYFUL STEPS</strong>
+                    Pre-Birthday & Cake Smash Celebrations
+                  </div>
+                  <div class="cover-teaser-item">
+                    <strong>BRAND ELEGANCE</strong>
+                    Commercial & High-Strobe Fashion Imagery
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAGE 2: WELCOME & EDITOR'S LETTER -->
+          <div class="page page-right">
+            <div class="page-meta-head">
+              <span>DECORSPOT 2.0 • STUDIO JOURNAL</span>
+              <span class="page-num">02</span>
+            </div>
+
+            <div class="mag-section-tag">EDITORIAL FOREWORD</div>
+            <h2 class="mag-h1">Where Memories Become Timeless Art</h2>
+            
+            <p class="mag-lead dropcap">
+              Welcome to the premiere edition of the DecorSpot Studio Journal. Photography, at its highest expression, is the quiet preservation of raw emotion and intimate milestones. Located opposite HM College in Randar, Muvattupuzha, Kerala, our boutique studio was created as a sanctuary where families and brands can freeze time.
+            </p>
+
+            <p class="mag-body-text">
+              In this edition, we invite you behind the lens to explore our four flagship portfolios: from our hospital-grade, climate-controlled baby suite to ethereal outdoor maternity sessions, whimsical birthday celebrations, and high-strobe commercial fashion campaigns.
+            </p>
+
+            <div class="quote-box">
+              <p>“We don’t just take pictures; we craft heirlooms that your family will treasure across generations.”</p>
+              <span class="quote-author">— Lead Creative Director, DecorSpot 2.0</span>
+            </div>
+
+            <div class="mag-img-frame" style="height: 220px;" onclick="openLightbox('photos_drive/1K5A0079.JPG', 'Behind the Lens — Sanitized 28°C Newborn Studio Environment')">
+              <img src="photos_drive/1K5A0079.JPG" alt="Studio Setup" />
+            </div>
+            <p class="img-caption">Figure 1.1: DecorSpot 2.0 Signature Studio Environment • Muvattupuzha, Kerala</p>
+
+            <div class="page-meta-foot">
+              <span>INSIDE THE STUDIO</span>
+              <span>DECORSPOT.IN</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ====================================================================
+             SPREAD 2: FEATURE STORY — NEWBORN & BABY PORTRAITURE (GOOGLE DRIVE PHOTOS)
+             ==================================================================== -->
+        <div class="page-spread-wrapper" data-spread="2" style="display: none; width: 100%;">
+          
+          <!-- PAGE 3: BABY PORTRAITS LEFT -->
+          <div class="page page-left">
+            <div class="page-meta-head">
+              <span>COVER FEATURE • NEWBORN PORTRAITURE</span>
+              <span class="page-num">03</span>
+            </div>
+
+            <span class="featured-badge">👶 Signature Newborn Suite</span>
+            <h2 class="mag-h1">The Delicate Grace of Early Days</h2>
+            
+            <p class="mag-body-text dropcap">
+              Every curve of a baby’s tiny hand and every serene expression during sleep changes in the blink of an eye. Our newborn portraiture is crafted with meticulous care, prioritizing comfort and warmth above all else.
+            </p>
+
+            <div class="grid-2">
+              <div class="mag-img-frame" style="height: 260px;" onclick="openLightbox('photos_drive/1K5A0014.JPG', 'Baby Milestone Portrait — Pure Innocence')">
+                <img src="photos_drive/1K5A0014.JPG" alt="Baby Portrait 1" />
+              </div>
+              <div class="mag-img-frame" style="height: 260px;" onclick="openLightbox('photos_drive/1K5A0024.JPG', 'Gentle Sleeping Pose — Soft Pastel Set')">
+                <img src="photos_drive/1K5A0024.JPG" alt="Baby Portrait 2" />
+              </div>
+            </div>
+            <p class="img-caption">Figures 2.1 & 2.2: Soft pastel wraps, organic wooden props, and natural studio diffusion.</p>
+
+            <div class="quote-box">
+              <p>“Our baby suite maintains a constant 28°C temperature with HEPA air purification for total peace of mind.”</p>
+            </div>
+
+            <div class="page-meta-foot">
+              <span>NEWBORN COLLECTION</span>
+              <span>PAGE 3</span>
+            </div>
+          </div>
+
+          <!-- PAGE 4: BABY PORTRAITS RIGHT -->
+          <div class="page page-right">
+            <div class="page-meta-head">
+              <span>FEATURE GALLERY • BABY MILESTONES</span>
+              <span class="page-num">04</span>
+            </div>
+
+            <h3 class="mag-h2">Unscripted Joy & Expressive Details</h3>
+            <p class="mag-body-text">
+              We practice 100% baby-led pacing—allowing ample time for feeding, soothing, and unhurried cuddles. Each frame reflects authentic personality and soft lighting depth.
+            </p>
+
+            <div class="grid-2" style="margin-top: 1rem;">
+              <div class="mag-img-frame" style="height: 240px;" onclick="openLightbox('photos_drive/1K5A0043.JPG', 'Smiling Milestone Portrait')">
+                <img src="photos_drive/1K5A0043.JPG" alt="Baby Portrait 3" />
+              </div>
+              <div class="mag-img-frame" style="height: 240px;" onclick="openLightbox('photos_drive/1K5A0057.JPG', 'Classic Baby Expression')">
+                <img src="photos_drive/1K5A0057.JPG" alt="Baby Portrait 4" />
+              </div>
+            </div>
+
+            <div class="mag-cta-box">
+              <h4>Book a Baby & Newborn Session</h4>
+              <p>Includes sanitized wardrobe, custom props, and digital high-res collection.</p>
+              <a href="https://wa.me/918891236399?text=Hello%20DecorSpot!%20I%20am%20interested%20in%20booking%20a%20Newborn/Baby%20Photoshoot." target="_blank" class="btn-wa-mag">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                Enquire Newborn Shoot
+              </a>
+            </div>
+
+            <div class="page-meta-foot">
+              <span>DECORSPOT 2.0</span>
+              <span>PAGE 4</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ====================================================================
+             SPREAD 3: MATERNITY & MOTHERHOOD STORIES
+             ==================================================================== -->
+        <div class="page-spread-wrapper" data-spread="3" style="display: none; width: 100%;">
+          
+          <!-- PAGE 5: MATERNITY LEFT -->
+          <div class="page page-left">
+            <div class="page-meta-head">
+              <span>PORTFOLIO • MATERNITY STORIES</span>
+              <span class="page-num">05</span>
+            </div>
+
+            <span class="featured-badge">🌸 Motherhood & Bump Portraits</span>
+            <h2 class="mag-h1">Embracing the Miracle of New Beginnings</h2>
+
+            <p class="mag-body-text dropcap">
+              Maternity photography celebrates the radiant strength and beauty of expecting mothers. Our studio wardrobe offers handcrafted designer gowns, ethereal silk drapes, and flattering silhouettes tailored to elevate your natural glow.
+            </p>
+
+            <div class="grid-2">
+              <div class="mag-img-frame" style="height: 310px;" onclick="openLightbox('magazine_assets/maternity_1.jpg', 'Radiant Maternity Portrait — Designer Gown')">
+                <img src="magazine_assets/maternity_1.jpg" alt="Maternity 1" />
+              </div>
+              <div class="mag-img-frame" style="height: 310px;" onclick="openLightbox('magazine_assets/maternity_2.jpg', 'Couple & Bump Story — Romantic Studio Lighting')">
+                <img src="magazine_assets/maternity_2.jpg" alt="Maternity 2" />
+              </div>
+            </div>
+            <p class="img-caption">Figures 3.1 & 3.2: Glowing maternity gowns and intimate partner bump stories.</p>
+
+            <div class="page-meta-foot">
+              <span>MATERNITY COLLECTION</span>
+              <span>PAGE 5</span>
+            </div>
+          </div>
+
+          <!-- PAGE 6: MATERNITY RIGHT -->
+          <div class="page page-right">
+            <div class="page-meta-head">
+              <span>MATERNITY & FAMILY</span>
+              <span class="page-num">06</span>
+            </div>
+
+            <h3 class="mag-h2">Sculpted Light & Soft Elegance</h3>
+            <p class="mag-body-text">
+              Whether you prefer high-fashion studio portraiture with dramatic chiaroscuro lighting or gentle outdoor sunset golden hours in Kerala, we tailor every detail to your personal style.
+            </p>
+
+            <div class="grid-2">
+              <div class="mag-img-frame" style="height: 250px;" onclick="openLightbox('magazine_assets/maternity_3.jpg', 'Ethereal Silk Flow Maternity Pose')">
+                <img src="magazine_assets/maternity_3.jpg" alt="Maternity 3" />
+              </div>
+              <div class="mag-img-frame" style="height: 250px;" onclick="openLightbox('magazine_assets/maternity_4.jpg', 'Golden Hour Outdoor Bump Session')">
+                <img src="magazine_assets/maternity_4.jpg" alt="Maternity 4" />
+              </div>
+            </div>
+
+            <div class="mag-cta-box">
+              <h4>Book Your Maternity Story</h4>
+              <p>Includes designer gown access, hair/makeup styling guidance & partner poses.</p>
+              <a href="https://wa.me/918891236399?text=Hello%20DecorSpot!%20I%20would%20love%20to%20enquire%20about%20a%20Maternity%20Photoshoot." target="_blank" class="btn-wa-mag">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                Enquire Maternity Shoot
+              </a>
+            </div>
+
+            <div class="page-meta-foot">
+              <span>DECORSPOT 2.0</span>
+              <span>PAGE 6</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ====================================================================
+             SPREAD 4: PRE-BIRTHDAY & MILESTONE CELEBRATIONS
+             ==================================================================== -->
+        <div class="page-spread-wrapper" data-spread="4" style="display: none; width: 100%;">
+          
+          <!-- PAGE 7: PRE-BIRTHDAY LEFT -->
+          <div class="page page-left">
+            <div class="page-meta-head">
+              <span>FEATURE • PRE-BIRTHDAY CELEBRATIONS</span>
+              <span class="page-num">07</span>
+            </div>
+
+            <span class="featured-badge">🎂 Bespoke Themes & Cake Smash</span>
+            <h2 class="mag-h1">Turning Milestones into Magical Memories</h2>
+
+            <p class="mag-body-text dropcap">
+              First birthdays and early childhood milestones deserve a grand, joyful celebration. From custom balloon arches and whimsical themed backdrops to messy, laughter-filled cake smashes, we capture pure delight.
+            </p>
+
+            <div class="grid-2">
+              <div class="mag-img-frame" style="height: 310px;" onclick="openLightbox('magazine_assets/prebirthday_1.jpg', 'First Birthday Whimsical Theme Setup')">
+                <img src="magazine_assets/prebirthday_1.jpg" alt="Prebirthday 1" />
+              </div>
+              <div class="mag-img-frame" style="height: 310px;" onclick="openLightbox('magazine_assets/prebirthday_2.jpg', 'Joyful Toddler Expressions')">
+                <img src="magazine_assets/prebirthday_2.jpg" alt="Prebirthday 2" />
+              </div>
+            </div>
+            <p class="img-caption">Figures 4.1 & 4.2: Custom themed set designs, balloon styling, and cake smash fun.</p>
+
+            <div class="page-meta-foot">
+              <span>BIRTHDAY & MILESTONES</span>
+              <span>PAGE 7</span>
+            </div>
+          </div>
+
+          <!-- PAGE 8: PRE-BIRTHDAY RIGHT -->
+          <div class="page page-right">
+            <div class="page-meta-head">
+              <span>CAKE SMASH & SPLASH</span>
+              <span class="page-num">08</span>
+            </div>
+
+            <h3 class="mag-h2">Mess-Friendly Sets & Warm Splash Cleanup</h3>
+            <p class="mag-body-text">
+              Our cake smash sessions include a bonus milk-bath or warm bubble splash session afterwards, giving you adorable bath portraits while cleaning up baby effortlessly!
+            </p>
+
+            <div class="grid-2">
+              <div class="mag-img-frame" style="height: 250px;" onclick="openLightbox('magazine_assets/prebirthday_3.jpg', 'Messy Cake Smash Moment')">
+                <img src="magazine_assets/prebirthday_3.jpg" alt="Prebirthday 3" />
+              </div>
+              <div class="mag-img-frame" style="height: 250px;" onclick="openLightbox('magazine_assets/prebirthday_4.jpg', 'Warm Milk Bath Splash Session')">
+                <img src="magazine_assets/prebirthday_4.jpg" alt="Prebirthday 4" />
+              </div>
+            </div>
+
+            <div class="mag-cta-box">
+              <h4>Book a Birthday / Cake Smash Shoot</h4>
+              <p>Pick from 15+ themes (Pastel Jungle, Royal Crown, Floral Garden, Vintage Car & more).</p>
+              <a href="https://wa.me/918891236399?text=Hello%20DecorSpot!%20I%20am%20interested%20in%20a%20Pre-Birthday/Cake%20Smash%20Shoot." target="_blank" class="btn-wa-mag">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                Enquire Birthday Shoot
+              </a>
+            </div>
+
+            <div class="page-meta-foot">
+              <span>DECORSPOT 2.0</span>
+              <span>PAGE 8</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ====================================================================
+             SPREAD 5: COMMERCIAL & BRAND PHOTOGRAPHY + BACK COVER
+             ==================================================================== -->
+        <div class="page-spread-wrapper" data-spread="5" style="display: none; width: 100%;">
+          
+          <!-- PAGE 9: COMMERCIAL LEFT -->
+          <div class="page page-left">
+            <div class="page-meta-head">
+              <span>PORTFOLIO • COMMERCIAL & BRANDING</span>
+              <span class="page-num">09</span>
+            </div>
+
+            <span class="featured-badge">💼 Studio Strobe & Brand Lookbooks</span>
+            <h2 class="mag-h1">Commercial Imagery with Visual Punch</h2>
+
+            <p class="mag-body-text dropcap">
+              From e-commerce product lines and fashion lookbooks to corporate leadership headshots and brand lifestyle campaigns, DecorSpot delivers crisp, high-impact commercial imagery engineered for print and digital media.
+            </p>
+
+            <div class="grid-2">
+              <div class="mag-img-frame" style="height: 310px;" onclick="openLightbox('magazine_assets/commercial_1.jpg', 'High Fashion & Commercial Lighting')">
+                <img src="magazine_assets/commercial_1.jpg" alt="Commercial 1" />
+              </div>
+              <div class="mag-img-frame" style="height: 310px;" onclick="openLightbox('magazine_assets/commercial_2.jpg', 'Product Styling & Branding Session')">
+                <img src="magazine_assets/commercial_2.jpg" alt="Commercial 2" />
+              </div>
+            </div>
+            <p class="img-caption">Figures 5.1 & 5.2: Professional 4K strobes, color accuracy, and high-res retouching.</p>
+
+            <div class="page-meta-foot">
+              <span>COMMERCIAL COLLECTION</span>
+              <span>PAGE 9</span>
+            </div>
+          </div>
+
+          <!-- PAGE 10: BACK COVER & DIRECTORY -->
+          <div class="page page-right page-cover" style="background: #192922; color: var(--color-linen);">
+            <div class="cover-overlay" style="padding: 2.5rem; background: linear-gradient(180deg, rgba(25,41,34,0.95) 0%, rgba(25,41,34,0.98) 100%);">
+              
+              <div style="border-bottom: 1px solid rgba(245,236,223,0.2); padding-bottom: 1rem; text-align: center;">
+                <img src="logo.jpg" alt="Logo" style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--color-ochre); margin: 0 auto 0.5rem auto; display: block;" />
+                <div style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--color-linen);">DECORSPOT 2.0</div>
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-ochre); letter-spacing: 0.2em; text-transform: uppercase;">PHOTOGRAPHY STUDIO • KERALA</div>
+              </div>
+
+              <div style="margin: 1.5rem 0;">
+                <h3 style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--color-ochre); margin-bottom: 0.75rem;">Studio Directory & Location</h3>
+                <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-sage); margin-bottom: 0.8rem;">
+                  📍 <strong>Location:</strong> Opposite HM College, Randar, Muvattupuzha, Kerala - 686673<br />
+                  📞 <strong>WhatsApp Direct:</strong> +91 88912 36399<br />
+                  📸 <strong>Instagram:</strong> @decorspot2.0<br />
+                  🌐 <strong>Website:</strong> www.decorspot.in
+                </p>
+
+                <div style="background: rgba(245,236,223,0.08); padding: 1rem; border-radius: 8px; border: 1px dashed rgba(245,236,223,0.2);">
+                  <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-ochre); text-transform: uppercase; margin-bottom: 0.3rem;">Studio Highlights & Services</div>
+                  <ul style="font-size: 0.8rem; color: var(--color-linen); list-style-position: inside; line-height: 1.6;">
+                    <li>Sanitized 28°C Newborn & Baby Suite</li>
+                    <li>Designer Maternity Gown Wardrobe</li>
+                    <li>15+ Bespoke Birthday Theme Sets</li>
+                    <li>High-Strobe Commercial & Fashion Rig</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div style="text-align: center; margin-top: auto;">
+                <a href="https://wa.me/918891236399?text=Hello%20DecorSpot!%20I%20read%20your%20Magazine%20and%20would%20love%20to%20book%20a%20photoshoot." target="_blank" class="btn-wa-mag" style="width: 100%; justify-content: center; font-size: 0.95rem; padding: 0.8rem;">
+                  💬 Reserve Your Photoshoot Session
+                </a>
+                <div style="font-family: var(--font-mono); font-size: 0.68rem; color: rgba(245,236,223,0.4); margin-top: 1rem; text-transform: uppercase;">
+                  © 2026 DECORSPOT 2.0 STUDIO • ALL RIGHTS RESERVED
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       MAGAZINE FOOTER BAR / PAGINATION SCRUBBER
+       ======================================================================== -->
+  <footer class="mag-footer-bar">
+    <button class="nav-arrow-btn" id="btnPrev" title="Previous Page">‹</button>
+
+    <div class="scrubber-wrap" id="scrubberWrap">
+      <div class="scrub-thumb active" data-spread="1" style="background-image: url('photos_drive/1K5A0005.JPG');" title="Cover & Foreword"></div>
+      <div class="scrub-thumb" data-spread="2" style="background-image: url('photos_drive/1K5A0014.JPG');" title="Baby & Newborn Feature"></div>
+      <div class="scrub-thumb" data-spread="3" style="background-image: url('magazine_assets/maternity_1.jpg');" title="Maternity Stories"></div>
+      <div class="scrub-thumb" data-spread="4" style="background-image: url('magazine_assets/prebirthday_1.jpg');" title="Pre-Birthday & Cake Smash"></div>
+      <div class="scrub-thumb" data-spread="5" style="background-image: url('magazine_assets/commercial_1.jpg');" title="Commercial & Back Cover"></div>
+    </div>
+
+    <div class="page-indicator" id="pageIndicator">Spread 1 of 5 (Pages 1-2)</div>
+
+    <button class="nav-arrow-btn" id="btnNext" title="Next Page">›</button>
+  </footer>
+
+  <!-- ========================================================================
+       LIGHTBOX MODAL
+       ======================================================================== -->
+  <div class="mag-lightbox" id="magLightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <img src="" alt="Expanded View" class="lightbox-img" id="lightboxImg" />
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MAGAZINE INTERACTIVE JAVASCRIPT
+       ======================================================================== -->
+  <script>
+    let currentSpread = 1;
+    const totalSpreads = 5;
+    let isSinglePageMode = false;
+    let soundEnabled = true;
+
+    // DOM Elements
+    const spreadViewport = document.getElementById('spreadViewport');
+    const magazineBook = document.getElementById('magazineBook');
+    const pageIndicator = document.getElementById('pageIndicator');
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    const scrubThumbs = document.querySelectorAll('.scrub-thumb');
+    const btnToggleView = document.getElementById('btnToggleView');
+    const viewModeLabel = document.getElementById('viewModeLabel');
+    const btnSound = document.getElementById('btnSound');
+    const btnFullscreen = document.getElementById('btnFullscreen');
+
+    // Web Audio Synthesized Paper Flip Sound
+    function playFlipSound() {
+      if (!soundEnabled) return;
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const bufferSize = audioCtx.sampleRate * 0.08;
+        const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+        const output = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          output[i] = Math.random() * 2 - 1;
+        }
+        const whiteNoise = audioCtx.createBufferSource();
+        whiteNoise.buffer = buffer;
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(800, audioCtx.currentTime);
+        filter.Q.setValueAtTime(1.5, audioCtx.currentTime);
+
+        const gainNode = audioCtx.createGain();
+        gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+
+        whiteNoise.connect(filter);
+        filter.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        whiteNoise.start();
+      } catch (e) {
+        // Audio API fallback
+      }
+    }
+
+    function showSpread(spreadNum) {
+      if (spreadNum < 1 || spreadNum > totalSpreads) return;
+
+      currentSpread = spreadNum;
+      playFlipSound();
+
+      document.querySelectorAll('.page-spread-wrapper').forEach(wrapper => {
+        const num = parseInt(wrapper.getAttribute('data-spread'));
+        if (num === currentSpread) {
+          wrapper.style.display = 'flex';
+        } else {
+          wrapper.style.display = 'none';
+        }
+      });
+
+      // Update Scrubber Active State
+      scrubThumbs.forEach(thumb => {
+        const num = parseInt(thumb.getAttribute('data-spread'));
+        if (num === currentSpread) {
+          thumb.classList.add('active');
+        } else {
+          thumb.classList.remove('active');
+        }
+      });
+
+      // Update Page Indicator
+      const startPage = (currentSpread - 1) * 2 + 1;
+      const endPage = currentSpread * 2;
+      pageIndicator.textContent = `Spread ${currentSpread} of ${totalSpreads} (Pages ${startPage}-${endPage})`;
+
+      // Update Prev / Next Buttons
+      btnPrev.disabled = currentSpread === 1;
+      btnNext.disabled = currentSpread === totalSpreads;
+    }
+
+    // Event Listeners
+    btnPrev.addEventListener('click', () => showSpread(currentSpread - 1));
+    btnNext.addEventListener('click', () => showSpread(currentSpread + 1));
+
+    scrubThumbs.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const target = parseInt(thumb.getAttribute('data-spread'));
+        showSpread(target);
+      });
+    });
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+        showSpread(currentSpread + 1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        showSpread(currentSpread - 1);
+      } else if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+
+    // Toggle Single Page / Spread View
+    btnToggleView.addEventListener('click', () => {
+      isSinglePageMode = !isSinglePageMode;
+      if (isSinglePageMode) {
+        magazineBook.classList.add('single-page-mode');
+        viewModeLabel.textContent = 'Single Page';
+        btnToggleView.classList.add('active');
+      } else {
+        magazineBook.classList.remove('single-page-mode');
+        viewModeLabel.textContent = '2-Page Spread';
+        btnToggleView.classList.remove('active');
+      }
+    });
+
+    // Sound Toggle
+    btnSound.addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      btnSound.classList.toggle('active', soundEnabled);
+    });
+
+    // Fullscreen Toggle
+    btnFullscreen.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+        btnFullscreen.classList.add('active');
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+          btnFullscreen.classList.remove('active');
+        }
+      }
+    });
+
+    // Lightbox Logic
+    function openLightbox(imgSrc, captionText) {
+      const magLightbox = document.getElementById('magLightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+
+      lightboxImg.src = imgSrc;
+      lightboxCaption.textContent = captionText || '';
+      magLightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+      document.getElementById('magLightbox').classList.remove('active');
+    }
+
+    // Initialize
+    showSpread(1);
+  </script>
+</body>
+</html>
