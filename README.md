@@ -35,7 +35,7 @@ Specializing in **all types of photoshoots**:
    - WhatsApp Number: **`+91 88912 36399`** (`wa.me/918891236399`)
    - Interactive Enquiry Form saves leads into the **Admin Panel Inbox** (`localStorage`) and offers 1-click personalized WhatsApp chat launch.
    - Instagram: **`@decorspot2.0`** with 1-click clipboard copy.
-   - Google Maps Location: [Parolil Building, Near HM Training School, Randarkara, Muvattupuzha – 686673](https://maps.app.goo.gl/L9ShESgWo64TBaLZA?g_st=aw).
+   - Google Maps Location: [Parolil Building, Near HM Training School, Randarkara, Muvattupuzha – 686673](https://maps.app.goo.gl/cPeBJjtVVJp8Q8dy6).
 
 ---
 

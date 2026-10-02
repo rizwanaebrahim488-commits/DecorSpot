@@ -31,7 +31,7 @@ const DEFAULT_DATA = {
     instaUrl: "https://www.instagram.com/decorspot2.0?stkn=cG9yaDgxZTJtbzA1&utm_source=qr",
     instaHandle: "@decorspot2.0",
     locationDisplay: "Parolil Building, Near HM Training School, Randarkara, Muvattupuzha P.O. – 686673",
-    mapsUrl: "https://maps.app.goo.gl/L9ShESgWo64TBaLZA?g_st=aw",
+    mapsUrl: "https://maps.app.goo.gl/cPeBJjtVVJp8Q8dy6",
     workingHours: "Tue – Sun: 9:00 AM – 6:30 PM (Mondays by appointment)"
   },
   services: [
@@ -278,7 +278,7 @@ const DEFAULT_DATA = {
 
 let currentPackageFilter = 'all';
 
-const SCHEMA_VERSION = '2.9';
+const SCHEMA_VERSION = '3.0';
 
 function loadConfigFromStorage() {
   try {
@@ -316,7 +316,7 @@ function loadConfigFromStorage() {
           parsed.studio.subtitle = DEFAULT_DATA.studio.subtitle;
         }
         // Auto-migrate location if old location was stored
-        if (!parsed.contact.locationDisplay || !parsed.contact.locationDisplay.includes("Parolil") || version !== SCHEMA_VERSION) {
+        if (!parsed.contact.locationDisplay || !parsed.contact.locationDisplay.includes("Parolil") || !parsed.contact.mapsUrl || parsed.contact.mapsUrl.includes("L9ShESgWo64TBaLZA") || version !== SCHEMA_VERSION) {
           parsed.contact.locationDisplay = DEFAULT_DATA.contact.locationDisplay;
           parsed.contact.mapsUrl = DEFAULT_DATA.contact.mapsUrl;
         }
