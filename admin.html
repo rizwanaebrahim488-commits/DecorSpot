@@ -521,7 +521,7 @@
             <button class="admin-btn terracotta small" id="addServiceBtn">+ Add New Service</button>
           </div>
           <p style="font-size:0.9rem;color:var(--color-text-muted);margin-bottom:20px;">
-            DecorSpot 2.0 covers all photoshoot categories: Newborn, Maternity, Pre-Wedding, Birthday & Cake Smash, Commercial & Brand, and Family Portraits. Edit details, images, and highlight bullets below:
+            DecorSpot 2.0 covers all photoshoot categories: Newborn, Maternity, Pre-Wedding, Pre-Birthday, Commercial & Brand, and Family Portraits. Edit details, images, and highlight bullets below:
           </p>
           <div id="servicesList">
             <!-- Dynamically populated -->
@@ -546,7 +546,7 @@
                 <option value="newborn">Newborn & Baby</option>
                 <option value="maternity">Maternity & Motherhood</option>
                 <option value="prewedding">Pre-Wedding & Couples</option>
-                <option value="birthday">Birthdays & Milestones</option>
+                <option value="birthday">Pre-Birthday</option>
                 <option value="commercial">Commercial & Brand</option>
                 <option value="family">Family & Tender Moments</option>
                 <option value="details">Tiny Details & Hands</option>
@@ -582,7 +582,7 @@
             <span class="category-tag newborn" data-cat="newborn">Newborn & Baby</span>
             <span class="category-tag maternity" data-cat="maternity">Maternity</span>
             <span class="category-tag prewedding" data-cat="prewedding">Pre-Wedding</span>
-            <span class="category-tag birthday" data-cat="birthday">Birthdays</span>
+            <span class="category-tag birthday" data-cat="birthday">Pre-Birthday</span>
             <span class="category-tag commercial" data-cat="commercial">Commercial</span>
             <span class="category-tag family" data-cat="family">Family</span>
             <span class="category-tag" data-cat="details">Details</span>
@@ -599,7 +599,7 @@
             <button class="admin-btn terracotta small" id="addPackageBtn">+ Add New Package</button>
           </div>
           <p style="font-size:0.9rem;color:var(--color-text-muted);margin-bottom:20px;">
-            Create packages for Newborn, Maternity, Pre-Wedding, Birthdays, and Commercial shoots. Clients will see these categorized in the "Packages" section on your website.
+            Create packages for Newborn, Maternity, Pre-Wedding, Pre-Birthday, Commercial, Custom Mades, and Outdoors. Clients will see these categorized in the "Packages" section on your website.
           </p>
           <div id="packagesList"></div>
         </div>
@@ -635,7 +635,7 @@
           </div>
           <div class="form-group full-width" style="margin-bottom:20px;">
             <label class="admin-label">Hero Body Description</label>
-            <textarea class="admin-textarea" id="heroDesc" rows="3" placeholder="A warm, boutique photography studio located opposite HM College, Randar, Muvattupuzha..."></textarea>
+            <textarea class="admin-textarea" id="heroDesc" rows="3" placeholder="A warm, boutique photography studio located in Parolil Building, near HM Training School, Randarkara, Muvattupuzha..."></textarea>
           </div>
           <button class="admin-btn" id="saveStudioBtn">Save Studio Branding</button>
         </div>
@@ -671,7 +671,7 @@
           </div>
           <div class="form-group full-width">
             <label class="admin-label">Default WhatsApp Enquiry Message</label>
-            <textarea class="admin-textarea" id="waDefaultMsg" rows="2" placeholder="Hello DecorSpot Studio! I would love to enquire about booking a photoshoot session."></textarea>
+            <textarea class="admin-textarea" id="waDefaultMsg" rows="2" placeholder="Hello decorspot, I'd love to know more about a photography session."></textarea>
           </div>
         </div>
 
@@ -719,11 +719,11 @@
           <div class="form-row">
             <div class="form-group">
               <label class="admin-label">Location / City Display</label>
-              <input type="text" class="admin-input" id="locationDisplay" placeholder="Opp. HM College, Randar, Muvattupuzha – 686673" />
+              <input type="text" class="admin-input" id="locationDisplay" placeholder="Parolil Building, Near HM Training School, Randarkara, Muvattupuzha P.O. – 686673" />
             </div>
             <div class="form-group">
               <label class="admin-label">Google Maps URL</label>
-              <input type="url" class="admin-input" id="mapsUrl" placeholder="https://maps.google.com/?q=Opposite+HM+College,+Randar,+Muvattupuzha,+Kerala+686673" />
+              <input type="url" class="admin-input" id="mapsUrl" placeholder="https://maps.app.goo.gl/L9ShESgWo64TBaLZA?g_st=aw" />
             </div>
           </div>
           <div class="form-group full-width">
@@ -742,7 +742,7 @@
             <button class="admin-btn terracotta small" id="addFaqBtn">+ Add New FAQ</button>
           </div>
           <p style="font-size:0.9rem;color:var(--color-text-muted);margin-bottom:20px;">
-            Answers to client queries across newborn, maternity, pre-wedding, birthdays, props, and turnaround times.
+            Answers to client queries across newborn, maternity, pre-wedding, pre-birthday, props, and turnaround times.
           </p>
           <div id="faqsList"></div>
         </div>
@@ -798,18 +798,16 @@
       <form id="loginForm">
         <div class="form-group" style="text-align:left;margin-bottom:14px;">
           <label class="admin-label" for="loginEmail">Email Address</label>
-          <input type="email" class="admin-input" id="loginEmail" placeholder="admin@decorspot.in" value="admin@decorspot.in" required />
+          <input type="email" class="admin-input" id="loginEmail" placeholder="" value="decorspot1@gmail.com" required />
         </div>
         <div class="form-group" style="text-align:left;margin-bottom:20px;">
           <label class="admin-label" for="loginPassword">Password</label>
-          <input type="password" class="admin-input" id="loginPassword" placeholder="decorspopt2.0" value="decorspopt2.0" required />
+          <input type="password" class="admin-input" id="loginPassword" placeholder="" value="Ashiq@123" required />
         </div>
         <button type="submit" class="admin-btn" style="width:100%;justify-content:center;padding:13px;">Sign In to Dashboard</button>
       </form>
 
-      <div style="margin-top:14px;padding:10px 14px;background:rgba(37,63,53,0.06);border-radius:10px;font-size:0.8rem;color:var(--color-text-muted);text-align:center;">
-        Default login: <strong style="color:var(--color-primary);">admin@decorspot.in</strong> / <strong style="color:var(--color-primary);">decorspopt2.0</strong>
-      </div>
+      
 
       <div style="margin-top:16px;">
         <a href="index.html" style="font-size:0.85rem;color:var(--color-text-muted);text-decoration:underline;">← Return to Public Website</a>

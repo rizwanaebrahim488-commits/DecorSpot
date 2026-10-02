@@ -238,9 +238,12 @@ button, input, select, textarea {
 }
 
 .nav-insta-icon {
-  width: 14px;
-  height: 14px;
-  fill: currentColor;
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  flex-shrink: 0;
 }
 
 /* Nav WhatsApp Button */
@@ -1794,11 +1797,13 @@ button, input, select, textarea {
   z-index: 100;
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  padding: 0;
   background-color: var(--color-whatsapp);
   color: #fff;
-  padding: 12px 20px 12px 14px;
-  border-radius: 9999px;
+  border-radius: 50%;
   box-shadow: 0 8px 28px rgba(37, 211, 102, 0.4);
   font-size: 0.9rem;
   font-weight: 700;
@@ -1809,18 +1814,18 @@ button, input, select, textarea {
 
 .floating-whatsapp-btn:hover {
   background-color: var(--color-whatsapp-dark);
-  transform: translateY(-3px) scale(1.03);
+  transform: translateY(-3px) scale(1.06);
   box-shadow: 0 12px 36px rgba(37, 211, 102, 0.55);
   color: #fff;
 }
 
 .whatsapp-pulse-ring {
   position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border-radius: 9999px;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
   border: 2px solid var(--color-whatsapp);
   opacity: 0.7;
   animation: pulseRing 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;

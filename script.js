@@ -1,5 +1,5 @@
 /**
- * DECORSPOT 2.0 — Newborn, Maternity, Pre-Wedding, Birthday & Commercial Portrait Studio
+ * DECORSPOT 2.0 — Newborn, Maternity, Pre-Wedding, Pre-Birthday & Commercial Portrait Studio
  * Studio Configurations & Interactivity Engine
  */
 
@@ -12,8 +12,8 @@ const DEFAULT_DATA = {
     subtitle: "newborn & creative portrait studio",
     heroEyebrow: "fine art & boutique portrait studio",
     heroTagline: "Little moments,\nbeautifully held.",
-    heroDesc: "A warm, boutique photography studio located opposite HM College, Randar, Muvattupuzha. Specializing in timeless newborn & baby sessions, glowing maternity stories, cinematic pre-weddings, joyful birthdays, and refined commercial brand imagery.",
-    bookingNote: "Now reserving newborn, maternity, pre-wedding & commercial dates",
+    heroDesc: "A warm, boutique photography studio located in Parolil Building, near HM Training School, Randarkara, Muvattupuzha. Specializing in timeless newborn & baby sessions, glowing maternity stories, cinematic pre-weddings, joyful pre-birthdays, and refined commercial brand imagery.",
+    bookingNote: "Now reserving newborn, maternity, pre-wedding, pre-birthday & commercial dates",
     features: {
       sanitized: true,
       climate: true,
@@ -27,11 +27,11 @@ const DEFAULT_DATA = {
   contact: {
     waNumber: "+91 88912 36399",
     waCleanNumber: "918891236399",
-    waDefaultMsg: "Hello DecorSpot Studio! I would love to enquire about booking a photoshoot session.",
+    waDefaultMsg: "Hello decorspot, I'd love to know more about a photography session.",
     instaUrl: "https://www.instagram.com/decorspot2.0?stkn=cG9yaDgxZTJtbzA1&utm_source=qr",
     instaHandle: "@decorspot2.0",
-    locationDisplay: "Opp. HM College, Randar, Muvattupuzha – 686673",
-    mapsUrl: "https://maps.google.com/?q=Opposite+HM+College,+Randar,+Muvattupuzha,+Kerala+686673",
+    locationDisplay: "Parolil Building, Near HM Training School, Randarkara, Muvattupuzha P.O. – 686673",
+    mapsUrl: "https://maps.app.goo.gl/L9ShESgWo64TBaLZA?g_st=aw",
     workingHours: "Tue – Sun: 9:00 AM – 6:30 PM (Mondays by appointment)"
   },
   services: [
@@ -56,7 +56,7 @@ const DEFAULT_DATA = {
       category: "Motherhood Journey",
       badge: "Designer Gowns",
       desc: "Honoring the beauty, strength, and quiet glow of motherhood. Artful fine-art portraits celebrating your baby bump with your partner and family.",
-      image: "https://images.unsplash.com/photo-1544126592-807ade215a0b?auto=format&fit=crop&w=800&q=80",
+      image: "maternity_arch.jpg",
       highlights: [
         "Curated designer maternity gowns & flowing silk wraps",
         "Artful studio lighting or golden-hour outdoor glow",
@@ -82,18 +82,18 @@ const DEFAULT_DATA = {
     },
     {
       id: "birthday",
-      title: "Birthday & Cake Smash",
-      category: "Milestone Joy",
+      title: "Pre-Birthday Shoot",
+      category: "Pre-Birthday Magic",
       badge: "Custom Theme Sets",
-      desc: "First birthday milestone magic, custom theme backdrops, joyful cake smash fun, and lively milestone portraits for your growing little one.",
-      image: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=800&q=80",
+      desc: "Pre-birthday milestone magic, custom theme backdrops, joyful festive setups, and lively milestone portraits for your growing little one.",
+      image: "prebirthday_toddler.jpg",
       highlights: [
         "Custom themed floral, balloon & vintage sets",
-        "Mess-safe cake smash area & warm splash cleanup",
+        "Playful celebration sets & warm clean styling",
         "Sibling & family celebratory portraits included",
         "High-res digital gallery delivered within days"
       ],
-      whatsappMsg: "Hello DecorSpot! I'd love to enquire about a Birthday / Cake Smash Shoot."
+      whatsappMsg: "Hello DecorSpot! I'd love to enquire about a Pre-Birthday Shoot."
     },
     {
       id: "commercial",
@@ -101,7 +101,7 @@ const DEFAULT_DATA = {
       category: "Brand & Fashion",
       badge: "Studio 4K Rig",
       desc: "Impactful visual narratives for brands, fashion labels, jewellery, e-commerce, culinary arts, and professional executive profiles.",
-      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80",
+      image: "commercial_beauty.jpg",
       highlights: [
         "Full studio strobe lighting & calibrated color profiles",
         "Lookbook, flat-lay & high-fashion model shoots",
@@ -116,7 +116,7 @@ const DEFAULT_DATA = {
       category: "Heirloom Stories",
       badge: "Timeless Keepsake",
       desc: "Generations together under soft light. Documenting parents, children, and grandparents with honesty, warmth, and enduring grace.",
-      image: "img4.JPG",
+      image: "family_joy.jpg",
       highlights: [
         "Generations gathered in natural, loving connection",
         "Unhurried family pacing for kids & elders",
@@ -128,13 +128,16 @@ const DEFAULT_DATA = {
   ],
   photos: [
     { src: "img1.JPG", alt: "Sleeping newborn wrapped in an oat-colored knit blanket", category: "newborn", size: "col-span-7-row-2", caption: "the quiet hour — newborn" },
-    { src: "https://images.unsplash.com/photo-1544126592-807ade215a0b?auto=format&fit=crop&w=800&q=80", alt: "Radiant maternity portrait in soft golden morning light", category: "maternity", size: "col-span-5", caption: "golden bloom — maternity" },
+    { src: "prebirthday_toddler.jpg", alt: "Little girl sitting on wicker chair with sunglasses in outdoor boho teepee set", category: "birthday", size: "col-span-5", caption: "boho explorer — pre-birthday" },
+    { src: "maternity_arch.jpg", alt: "Radiant maternity portrait in olive gown with botanical floral arch", category: "maternity", size: "col-span-5", caption: "botanical bloom — maternity" },
     { src: "img2.JPG", alt: "Newborn tiny feet resting softly on an ivory linen blanket", category: "details", size: "col-span-5", caption: "soft beginnings — tiny toes" },
-    { src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80", alt: "Romantic pre-wedding couple embracing in Kerala nature", category: "prewedding", size: "col-span-12", caption: "forever began here — pre-wedding" },
-    { src: "img3.JPG", alt: "Swaddled newborn resting peacefully beside delicate florals", category: "newborn", size: "col-span-5", caption: "small wonder — newborn floral" },
-    { src: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=800&q=80", alt: "Joyful 1st birthday cake smash celebration", category: "birthday", size: "col-span-6", caption: "first celebration — cake smash" },
-    { src: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80", alt: "Editorial commercial brand & product styling", category: "commercial", size: "col-span-6", caption: "editorial vision — commercial" },
-    { src: "img4.JPG", alt: "Parent gently holding a newborn hand", category: "family", size: "col-span-6", caption: "held close — family bond" },
+    { src: "prebirthday_teddy.jpg", alt: "Giant plush teddy bear and macrame teepee celebration backdrop", category: "birthday", size: "col-span-6", caption: "teddy & teepee magic — pre-birthday" },
+    { src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80", alt: "Romantic pre-wedding couple embracing in Kerala nature", category: "prewedding", size: "col-span-6", caption: "forever began here — pre-wedding" },
+    { src: "prebirthday_cake.jpg", alt: "Bespoke milestone celebration cake with teddy bear toppers and cupcakes", category: "birthday", size: "col-span-6", caption: "sweet milestones — pre-birthday" },
+    { src: "img3.JPG", alt: "Swaddled newborn resting peacefully beside delicate florals", category: "newborn", size: "col-span-6", caption: "small wonder — newborn floral" },
+    { src: "maternity_studio.jpg", alt: "Minimalist studio maternity portrait in cozy cream knit dress", category: "maternity", size: "col-span-6", caption: "serene anticipation — maternity" },
+    { src: "commercial_beauty.jpg", alt: "Editorial commercial brand & cosmetic product styling", category: "commercial", size: "col-span-6", caption: "luxe aesthetics — commercial" },
+    { src: "family_joy.jpg", alt: "Joyful family maternity portrait with dad lifting daughter", category: "family", size: "col-span-6", caption: "boundless joy — family" },
     { src: "img5.JPG", alt: "Baby smiling in gentle dream in organic knit bonnet", category: "newborn", size: "col-span-6", caption: "gentle dream — bonnet portrait" },
     { src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80", alt: "Pre-wedding cinematic portrait session", category: "prewedding", size: "col-span-6", caption: "golden hour vows — pre-wedding" },
     { src: "img6.JPG", alt: "Mother gently cradling new baby in quiet morning light", category: "family", size: "col-span-6", caption: "motherhood quietude" }
@@ -187,10 +190,10 @@ const DEFAULT_DATA = {
     {
       id: "pkg_birthday",
       category: "birthday",
-      label: "Birthday & Cake Smash",
-      title: "First Milestone Joy",
-      desc: "A fun-filled milestone celebration with festive sets and pure infant glee.",
-      highlights: ["1.5 hours in festive themed studio set", "Custom theme balloons & floral backdrop styling", "Mess-free cake smash & bubble bath cleanup", "20 retouched high-resolution images", "Family mini-portraits included"],
+      label: "Pre-Birthday",
+      title: "Pre-Birthday Milestone",
+      desc: "A fun-filled milestone celebration with bespoke festive sets and joyful portraits.",
+      highlights: ["1.5 hours in festive themed studio set", "Custom theme balloons & floral backdrop styling", "Fun milestone celebration setups & props", "20 retouched high-resolution images", "Family mini-portraits included"],
       ctaText: "Enquire on WhatsApp",
       ctaStyle: "primary",
       popular: false
@@ -205,12 +208,46 @@ const DEFAULT_DATA = {
       ctaText: "Enquire on WhatsApp",
       ctaStyle: "primary",
       popular: false
+    },
+    {
+      id: "pkg_custom",
+      category: "custom",
+      label: "Custom Made",
+      title: "Bespoke Creative Concept",
+      desc: "A tailor-made portrait experience crafted entirely around your unique creative vision, themes, and personal milestones.",
+      highlights: [
+        "Dedicated concept consultation & moodboard curation",
+        "Custom studio set building & specialized thematic props",
+        "Curated wardrobe styling guidance & luxury wraps",
+        "25 signature fine-art retouched deliverables",
+        "Private high-resolution online proofing gallery"
+      ],
+      ctaText: "Enquire on WhatsApp",
+      ctaStyle: "terracotta",
+      popular: true
+    },
+    {
+      id: "pkg_outdoor",
+      category: "outdoor",
+      label: "Outdoors",
+      title: "Golden Hour Landscape",
+      desc: "Sun-drenched, natural light storytelling across scenic outdoor locations in Kerala—lush gardens, serene riversides, and golden fields.",
+      highlights: [
+        "2 to 3 unhurried golden-hour shooting hours",
+        "Handpicked scenic outdoor locations across Kerala",
+        "Spontaneous, candid and authentic interactive moments",
+        "30 high-resolution color-graded signature portraits",
+        "Full travel & equipment setup included"
+      ],
+      ctaText: "Enquire on WhatsApp",
+      ctaStyle: "primary",
+      popular: false
     }
   ],
   faqs: [
     {
       q: "What types of photoshoots does DecorSpot 2.0 specialize in?",
-      a: "While we are widely celebrated for our specialized newborn sanctuary, DecorSpot 2.0 is a comprehensive boutique portrait studio! We specialize in: Newborn & Baby, Maternity & Motherhood, Pre-Wedding & Couples, 1st Birthday & Cake Smash celebrations, Family Portraits, and Commercial / Brand / Product photography."
+      a: "While we are widely celebrated for our specialized newborn sanctuary, DecorSpot 2.0 is a comprehensive boutique portrait studio! We specialize in: Newborn & Baby, Maternity & Motherhood, Pre-Wedding & Couples, Pre-Birthday celebrations, Custom Made / Bespoke concepts, Outdoors, Family Portraits, and Commercial / Brand / Product photography."
     },
     {
       q: "When is the best time to book newborn vs maternity sessions?",
@@ -221,8 +258,8 @@ const DEFAULT_DATA = {
       a: "We collaborate with couples to plan both indoor aesthetic studio concepts and outdoor picturesque locations around Kerala. We guide you into effortless, genuine interactions rather than stiff poses, delivering both intimate romance and editorial grandeur."
     },
     {
-      q: "What is included in a Birthday or Cake Smash session?",
-      a: "Our birthday sessions include custom-designed theme backdrops (balloons, florals, boho setups), clean milestone portraiture, followed by the fun cake smash segment and a warm bubble bath splash! We take care of all sanitization and cleanup."
+      q: "What is included in a Pre-Birthday session?",
+      a: "Our pre-birthday sessions include custom-designed theme backdrops (balloons, florals, boho setups), clean milestone portraiture, playful celebration setups, and warm family portraits! We take care of all sanitization and styling."
     },
     {
       q: "Do you undertake commercial and product shoots?",
@@ -241,7 +278,7 @@ const DEFAULT_DATA = {
 
 let currentPackageFilter = 'all';
 
-const SCHEMA_VERSION = '2.4';
+const SCHEMA_VERSION = '2.9';
 
 function loadConfigFromStorage() {
   try {
@@ -250,19 +287,26 @@ function loadConfigFromStorage() {
     if (stored) {
       let parsed = JSON.parse(stored);
       const hasAllServices = parsed.services && parsed.services.length >= 6;
-      const hasAllPackages = parsed.packages && parsed.packages.some(p => p.category === 'prewedding') && parsed.packages.some(p => p.category === 'maternity');
+      const hasAllPackages = parsed.packages && 
+        parsed.packages.some(p => p.category === 'prewedding') && 
+        parsed.packages.some(p => p.category === 'maternity') &&
+        parsed.packages.some(p => p.category === 'custom') &&
+        parsed.packages.some(p => p.category === 'outdoor');
       const hasAllPhotos = parsed.photos && parsed.photos.some(p => p.category === 'commercial') && parsed.photos.some(p => p.category === 'prewedding');
+      const hasPreBirthday = parsed.services && parsed.services.some(s => s.id === 'birthday' && s.title && s.title.includes('Pre-Birthday'));
+      const hasPreBirthdayPhotos = parsed.photos && parsed.photos.some(p => p.category === 'birthday');
+      const hasPreBirthdayImg = parsed.services && parsed.services.some(s => s.id === 'birthday' && s.image && s.image.includes('prebirthday'));
 
-      if (!hasAllServices || !hasAllPackages || !hasAllPhotos || version !== SCHEMA_VERSION) {
+      if (!hasAllServices || !hasAllPackages || !hasAllPhotos || !hasPreBirthday || !hasPreBirthdayPhotos || !hasPreBirthdayImg || version !== SCHEMA_VERSION) {
         parsed = {
           ...DEFAULT_DATA,
           ...parsed,
           studio: { ...DEFAULT_DATA.studio, ...(parsed.studio || {}) },
           contact: { ...DEFAULT_DATA.contact, ...(parsed.contact || {}) },
-          services: hasAllServices ? parsed.services : DEFAULT_DATA.services,
-          photos: hasAllPhotos ? parsed.photos : DEFAULT_DATA.photos,
-          packages: hasAllPackages ? parsed.packages : DEFAULT_DATA.packages,
-          faqs: (parsed.faqs && parsed.faqs.length >= 6) ? parsed.faqs : DEFAULT_DATA.faqs
+          services: DEFAULT_DATA.services,
+          photos: DEFAULT_DATA.photos,
+          packages: DEFAULT_DATA.packages,
+          faqs: DEFAULT_DATA.faqs
         };
         // Ensure new multi-photoshoot copy is used if old baby-only copy was stored
         if (!parsed.studio.heroTagline || parsed.studio.heroTagline.includes("Gentle beginnings")) {
@@ -272,12 +316,16 @@ function loadConfigFromStorage() {
           parsed.studio.subtitle = DEFAULT_DATA.studio.subtitle;
         }
         // Auto-migrate location if old location was stored
-        if (!parsed.contact.locationDisplay || parsed.contact.locationDisplay.includes("Thrissur") || parsed.contact.locationDisplay === "Muvattupuzha, Ernakulam, Kerala") {
+        if (!parsed.contact.locationDisplay || !parsed.contact.locationDisplay.includes("Parolil") || version !== SCHEMA_VERSION) {
           parsed.contact.locationDisplay = DEFAULT_DATA.contact.locationDisplay;
           parsed.contact.mapsUrl = DEFAULT_DATA.contact.mapsUrl;
         }
-        if (!parsed.studio.heroDesc || parsed.studio.heroDesc.includes("Thrissur") || parsed.studio.heroDesc.includes("in Muvattupuzha, Kerala")) {
+        if (!parsed.studio.heroDesc || !parsed.studio.heroDesc.includes("Parolil") || version !== SCHEMA_VERSION) {
           parsed.studio.heroDesc = DEFAULT_DATA.studio.heroDesc;
+        }
+        // Auto-migrate default WhatsApp message
+        if (!parsed.contact.waDefaultMsg || parsed.contact.waDefaultMsg.includes("newborn") || parsed.contact.waDefaultMsg.includes("booking a photoshoot session") || version !== SCHEMA_VERSION) {
+          parsed.contact.waDefaultMsg = DEFAULT_DATA.contact.waDefaultMsg;
         }
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
@@ -849,11 +897,27 @@ function applyConfigToDOM() {
     if (el.textContent.includes('@')) el.textContent = config.instagramTag;
   });
 
-  document.querySelectorAll('.footer-location-link span, .social-location-link span, .enquire-maps-text').forEach(el => {
-    el.textContent = config.city + ' ↗';
+  // Footer full location text
+  document.querySelectorAll('.footer-location-text').forEach(el => {
+    el.textContent = config.city;
   });
 
-  document.querySelectorAll('a[href*="maps.google.com"], a.footer-location-link, a.social-location-link, #enquireMapsBtn, .footer-maps-bottom-link').forEach(link => {
+  // Top social proof bar location: clean, compact display (never overwrite .stat-dot)
+  document.querySelectorAll('.social-location-text').forEach(el => {
+    let display = 'Randarkara, Muvattupuzha ↗';
+    if (config.city && !config.city.includes('Parolil')) {
+      display = config.city.split(',').slice(0, 2).join(',').trim() + ' ↗';
+    }
+    el.textContent = display;
+  });
+
+  // Enquire button text
+  document.querySelectorAll('.enquire-maps-text').forEach(el => {
+    el.textContent = 'Find Studio on Google Maps ↗';
+  });
+
+  // All Google Maps Links
+  document.querySelectorAll('a[href*="maps.google.com"], a[href*="maps.app.goo.gl"], a.footer-location-link, a.social-location-link, #enquireMapsBtn, .footer-maps-bottom-link').forEach(link => {
     link.href = config.googleMapsUrl;
   });
 

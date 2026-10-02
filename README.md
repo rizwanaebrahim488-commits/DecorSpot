@@ -1,12 +1,12 @@
 # DecorSpot 2.0 — Comprehensive Portrait & Commercial Photography Studio
 
-A luxury, boutique photography studio website and built-in Admin CMS for **DecorSpot 2.0** located Opposite HM College, Randar, Muvattupuzha P.O., Kerala – 686673.
+A luxury, boutique photography studio website and built-in Admin CMS for **DecorSpot 2.0** located in Parolil Building, near HM Training School, Randarkara, Muvattupuzha P.O., Kerala – 686673.
 
 Specializing in **all types of photoshoots**:
 - 👶 **Newborn & Baby Portraits** (Signature hospital-grade sanitized 28°C suite, 100% baby-led pacing)
 - 🌸 **Maternity & Motherhood Stories** (Designer gowns, glowing natural light, partner & family bump portraits)
 - 💍 **Pre-Wedding & Couples Photography** (Cinematic love stories, picturesque outdoor Kerala spots & aesthetic studio sets)
-- 🎂 **Birthday Celebrations & Cake Smash** (Bespoke whimsical theme backdrops, mess-friendly cake smash, splash cleanup)
+- 🎂 **Pre-Birthday Shoot** (Bespoke whimsical theme backdrops, fun milestone celebration setups, playful portraits)
 - 💼 **Commercial, Fashion & Brand Imagery** (Studio 4K strobe lighting, product styling, e-commerce, lookbooks, executive profiles)
 - 👨‍👩‍👧‍👦 **Family & Generational Portraits** (Natural, unforced connection celebrating generations together)
 
@@ -24,18 +24,18 @@ Specializing in **all types of photoshoots**:
    - Each card features custom imagery, category tag, badge, description, bullet inclusions, and direct 1-click WhatsApp enquiry with pre-filled session text.
 
 3. **Multi-Category Filterable Gallery (`#gallery`)**:
-   - Bento masonry layout with category filter pills: *All Stories*, *Newborn & Baby*, *Maternity & Motherhood*, *Pre-Wedding & Couples*, *Birthdays & Milestones*, *Commercial & Brand*, and *Family & Details*.
+   - Bento masonry layout with category filter pills: *All Stories*, *Newborn & Baby*, *Maternity & Motherhood*, *Pre-Wedding & Couples*, *Pre-Birthday*, *Commercial & Brand*, and *Family & Details*.
    - Interactive full-screen Lightbox modal with zoom and captions.
 
 4. **Multi-Category Packages (`#packages`)**:
-   - Filterable collections with custom quote requests for any category.
+   - Filterable collections covering *Newborn*, *Maternity*, *Pre-Wedding*, *Pre-Birthday*, *Commercial*, *Custom Mades*, and *Outdoors*.
    - Includes transparent highlights, popular badges ("Most Cherished"), and 1-click WhatsApp booking buttons.
 
 5. **Customer Leads & WhatsApp Integration**:
    - WhatsApp Number: **`+91 88912 36399`** (`wa.me/918891236399`)
    - Interactive Enquiry Form saves leads into the **Admin Panel Inbox** (`localStorage`) and offers 1-click personalized WhatsApp chat launch.
    - Instagram: **`@decorspot2.0`** with 1-click clipboard copy.
-   - Google Maps Location: [Opposite HM College, Randar, Muvattupuzha – 686673](https://maps.google.com/?q=Opposite+HM+College,+Randar,+Muvattupuzha,+Kerala+686673).
+   - Google Maps Location: [Parolil Building, Near HM Training School, Randarkara, Muvattupuzha – 686673](https://maps.app.goo.gl/L9ShESgWo64TBaLZA?g_st=aw).
 
 ---
 
@@ -46,8 +46,8 @@ A complete web-based Content Management System that allows the studio owner to e
 ### How to Access:
 - Click **"Studio Admin Panel ↗"** in the website header or footer, or open **`admin.html`** in your browser.
 - **Default Credentials:**
-  - **Email:** `admin@decorspot.in`
-  - **Password:** `decorspopt2.0` (also accepts `decorspot2.0`)
+  - **Email:** `decorspot1@gmail.com`
+  - **Password:** `Ashiq@123`
 
 ### Admin Capabilities:
 1. **📬 Customer Inquiries & Leads**:
